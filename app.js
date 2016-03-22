@@ -28,12 +28,14 @@ function RelationshipMinderController (){
   var rmCont = this
 
   //object constructor to create new contact objects based on API connections and/or front-end clicks/actions
-  function contactItem(firstName, lastName, email, bucket, lastContact) {
+  function contactItem(firstName, lastName, email, bucket, lastContact, overdue, daysOverdue) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
       this.bucket = bucket;
       this.lastContact = lastContact;
+      this.overdue = overdue;
+      this.daysOverdue = daysOverdue;
   }
 
   // factory to turn our contacts into objects with durations
@@ -52,14 +54,20 @@ function RelationshipMinderController (){
   angular.module('relationshipMinder')
     .config(function($stateProvider, $urlRouterProvider) {
 
+      // catch all route
+      // send users to the landing page
+      $urlRouterProvider.otherwise('/landing');
+
       $stateProvider
-
+      // Route to show the landing page
+      .state('landing', {
+            url: '/landing',
+            templateUrl: 'landing.html'
+        })
       // Route to show the first page
-
       .state('getting-started', {
             url: '/getting-started',
-            templateUrl: 'getting-started.html',
-            controller: 'rmController as rmControl'
+            templateUrl: 'getting-started.html'
         })
         // nested states
         // each of these sections will have their own view
@@ -79,7 +87,7 @@ function RelationshipMinderController (){
        .state('getting-started.notifications', {
            url: '/notifications',
            templateUrl: 'notifications.html'
-       });
+       })
 
        // url will be /activity-feed.html
        .state('activity-feed', {
@@ -87,10 +95,7 @@ function RelationshipMinderController (){
            templateUrl: 'activity-feed.html'
        });
 
-           // catch all route
-           // send users to the activity-feed
-           $urlRouterProvider.otherwise('/activity-feed');
-       })
+    })
 
 
 })();

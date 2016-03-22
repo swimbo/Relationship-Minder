@@ -4,9 +4,6 @@
           box-sizing: border-box;
 }
 
-html { font-size: 62.5%; }
-body { font-size: 14px; font-size: 1.4rem; } /* =14px */
-h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
 
 /*.clearfix:after{
   content:"";
@@ -22,6 +19,14 @@ h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
 
 .who{
   padding-left: 60px;
+}
+
+.main-content{
+  margin-top: 100px;
+}
+
+.hero-unit{
+  margin-top: 20px;
 }
 
 footer {
