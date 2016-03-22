@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" ng-app="relationshipMinder">
 <head>
   <meta charset="utf-8">
 
@@ -11,12 +11,19 @@
   <link rel="stylesheet" href="main.css?v=1.0">
   <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <!-- Load up JS including Angular -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js" charset="utf-8"></script>
+  <!-- jQuery link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+  <!-- bootstrap js link -->
+  <script type="text/javascript" src="bootstrap/js/bootstrap.js">  </script>
+
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
 
-<body ng-app="relationshipMinder">
+<body ng-controller="rmController as rmCont">
     <!-- ================================================================== -->
     <!-- Navigation bar -->
     <!-- ================================================================== -->
@@ -134,13 +141,6 @@
   <!-- javascript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <!-- jQuery link -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
-
-  <!-- bootstrap js link -->
-  <script type="text/javascript" src="bootstrap/js/bootstrap.js">
-
-  </script>
-
+  <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
