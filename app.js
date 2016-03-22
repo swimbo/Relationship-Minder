@@ -3,7 +3,7 @@
   //======================================================//
   // Declare the module
   //======================================================//
-angular.module('relationshipMinder', [])
+angular.module('relationshipMinder', ['ngAnimate', 'ui.router'])
   // =======================================================//
   // Declare the factory
   // =======================================================//
@@ -20,10 +20,9 @@ console.log(contactList);
 
 // this factory stores data outside of the controller(s)
 function contactFactory(){
-    contactList.push(('bo', 'bergstrom', 'bo.bergstrom@gmail.com'))
+    var contactList = [ ]
     return(contactList)
   }
-console.log(contactList);
 
 function rmController (){
   var rmCont = this
@@ -42,10 +41,6 @@ function rmController (){
 
     console.log(contactList);
   }
-
-
-
-
 
 }
 

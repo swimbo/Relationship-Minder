@@ -27,3 +27,18 @@ h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
 footer {
   margin-top: 100px;
 }
+
+
+/*button text change*/
+#emailButton.collapsed:before
+{
+    background-color: red;
+    display:block;
+    width:15px;
+}
+button:before
+{
+    background-color: green;
+    display:block;
+    width:15px;
+}
