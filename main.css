@@ -1,0 +1,29 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html { font-size: 62.5%; }
+body { font-size: 14px; font-size: 1.4rem; } /* =14px */
+h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
+
+/*.clearfix:after{
+  content:"";
+  display:table;
+  clear:both;
+}*/
+.hero-unit{
+  margin-top: 100px;
+}
+.hero-unit p{
+  margin-top: 30px;
+}
+
+.who{
+  padding-left: 60px;
+}
+
+footer {
+  margin-top: 100px;
+}

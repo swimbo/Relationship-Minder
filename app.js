@@ -1,0 +1,12 @@
+(function (arguments) {
+
+
+
+
+
+
+
+
+
+  angular.module
+})();
