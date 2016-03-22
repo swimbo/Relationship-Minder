@@ -15,18 +15,18 @@ angular.module('relationshipMinder')
 angular.module('relationshipMinder')
         .controller('rmController', rmController)
 
+var contactList = []
+console.log(contactList);
+
 // this factory stores data outside of the controller(s)
 function contactFactory(){
-    var contactList = [ ]
+    contactList.push(('bo', 'bergstrom', 'bo.bergstrom@gmail.com'))
     return(contactList)
   }
+console.log(contactList);
 
 function rmController (){
   var rmCont = this
-
-  // we will store all of our contacts in this array
-  rmCont.contactList = ['test0@gmail.com','test1@gmail.com'];
-  console.log(contactList);
 
   //object constructor to create new contact objects based on API connections and/or front-end clicks/actions
   function contactItem(firstName, lastName, email, bucket, lastContact) {
@@ -48,8 +48,7 @@ function rmController (){
 
 
 }
-contactFactory()
-rmController()
+
 
 
 
