@@ -16,7 +16,7 @@
   <![endif]-->
 </head>
 
-<body>
+<body ng-app="relationshipMinder">
     <!-- ================================================================== -->
     <!-- Navigation bar -->
     <!-- ================================================================== -->
@@ -34,18 +34,6 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="nav-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
           </ul>
           <!-- <form class="navbar-form pull-right">
             <input class="span2" type="text" placeholder="Email">
@@ -70,51 +58,73 @@
     <!-- ================================================================== -->
     <!-- Subheaders with how and what -->
     <!-- ================================================================== -->
-    <div class="row">
-      <div class="span5 who">
-        <h2>Who is it for?</h2>
-          <ul>
-            <li>your clients</li>
-            <li>your marriage</li>
-            <li>your friendships</li>
-            <li>or all three!</li>
-          </ul><a class="btn" href="#">See Examples &raquo;</a></p>
+    <div class="container">
+      <div class="row">
+        <div class="span5 who">
+          <h2>Who is it for?</h2>
+            <ul>
+              <li>your clients</li>
+              <li>your marriage</li>
+              <li>your friendships</li>
+              <li>or all three!</li>
+            </ul><a class="btn" href="#">See Examples &raquo;</a></p>
+        </div>
+        <div class="span7">
+          <h2>How does it work?</h2>
+          <p>We use technology to help you stay in touch with those that matter most to you.  <br>
+            Getting started is as easy as three simple steps: adding your contacts, sorting <br>
+            them into buckets and setting up your alerts.<br>
+          </p>
+          <p><a class="btn" href="#">Get Started &raquo;</a></p>
+       </div>
+
       </div>
-      <div class="span7">
-        <h2>How does it work?</h2>
-        <p>We use technology to help you stay in touch with those that matter most to you.  <br>
-          Getting started is as easy as three simple steps: adding your contacts, sorting <br>
-          them into buckets and setting up your alerts.<br>
-        </p>
-        <p><a class="btn" href="#">Get Started &raquo;</a></p>
-     </div>
 
     </div>
     <!-- ================================================================== -->
-    <!-- Interactive web application begins here -->
+    <!-- Interactive web application begins here via angular injection-->
     <!-- ================================================================== -->
+    <div ui-view>
 
+    </div>
+    <!-- ================================================================== -->
+    <!-- Interactive web application begins here via angular injection-->
+    <!-- ================================================================== -->
     <div class="getting-started">
 
     </div>
     <!-- ================================================================== -->
     <!-- Connecting to email here -->
     <!-- ================================================================== -->
-    <div class="adding-contacts">
+    <div class="container">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Email Providers
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#">Gmail</a></li>
+          <li><a href="#">Outlook</a></li>
+        </ul>
+      </div>
 
     </div>
     <!-- ================================================================== -->
-    <!-- Subheaders with how and what -->
+    <!-- Bucketing your contacts -->
     <!-- ================================================================== -->
     <div class="bucketing">
 
     </div>
     <!-- ================================================================== -->
-    <!-- Subheaders with how and what -->
+    <!-- Setting up notifications -->
     <!-- ================================================================== -->
     <div class="set-notifications">
 
     </div>
+
+    <!-- ================================================================== -->
+    <!-- Footer -->
+    <!-- ================================================================== -->
     <footer>
       <p>&copy; Relationship Minder 2015</p>
     </footer>
@@ -124,7 +134,11 @@
   <!-- javascript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript" src="22bootstrap/js/boostrap.js">
+  <!-- jQuery link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+
+  <!-- bootstrap js link -->
+  <script type="text/javascript" src="bootstrap/js/bootstrap.js">
 
   </script>
 
