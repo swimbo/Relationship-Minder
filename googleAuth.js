@@ -61,6 +61,16 @@
 
 
 
+// code taken from another project as a basis for API access
+function googlePeopleAPIcontroller($http){
+  var GoogAPI = this
+
+  $http.get('https://accounts.google.com/o/oauth2/v2/auth?client_id=199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com&response_type=token&redirect_uri=https://thekidgarage.com/membership/&scope=email%20profile', {cache: true})
+    .then(function(response){
+      console.log(response.data)
+    })
+}
+googlePeopleAPIcontroller()
 
 
 //people.people.connections.list	Google People API v1	Provides a list of the authenticated user's contacts merged with any linked profiles.
