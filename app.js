@@ -4,11 +4,12 @@
   // Declare the module
   //======================================================//
 angular.module('relationshipMinder', ['ngAnimate', 'ui.router'])
-//   // =======================================================//
-//   // Declare the factory
-//   // =======================================================//
-// angular.module('relationshipMinder')
-//       .factory('contactFactory', contactFactory)
+  // =======================================================//
+  // Declare the factory
+  // =======================================================//
+  // angular.module('relationshipMinder')
+  //       .factory('contactFactory', contactFactory)
+
   // =======================================================//
   // Declare our controller for the webapp flow
   // =======================================================//
@@ -16,7 +17,7 @@ angular.module('relationshipMinder')
         .controller('RelationshipMinderController', RelationshipMinderController)
 
 var contactList = [('jack','doe','test1@gmail.com'),('jo','smith','test2@gmail.com')]
-
+var 
 
 // // this factory stores data outside of the controller(s)
 // function contactFactory(){
@@ -38,11 +39,39 @@ function RelationshipMinderController (){
       this.daysOverdue = daysOverdue;
   }
 
-  // factory to turn our contacts into objects with durations
+  //this function is going to add connect to the API and add the contacts to the contactList array
   function contactBucket(){
+
     console.log(contactList.name);
   }
-contactBucket()
+
+
+
+  //this function is going to add the bucket information to the contact objects
+  function contactBucket(){
+
+    console.log(contactList.name);
+  }
+
+  //this function is going to set the preferred notification type by... BUCKET?
+  function notificationType(){
+
+    console.log(contactList.name);
+  }
+
+  //this function is going to create an notificationArray of all the contacts who are overdue by filtering the array
+  function createNotificationArray(){
+
+    console.log(contactList.name);
+  }
+
+  //this function is going to add the number of days overdue to the alertArray
+  function (){
+
+    console.log(contactList.name);
+  }
+
+
 }
 
 
