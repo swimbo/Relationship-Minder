@@ -61,4 +61,6 @@
 
 
 
-{"web":{"client_id":"199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com","project_id":"relationship-minder","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"v3xdvpOun7qADaLOO7cY_cHK"}}
+
+
+//people.people.connections.list	Google People API v1	Provides a list of the authenticated user's contacts merged with any linked profiles.
