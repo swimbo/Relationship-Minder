@@ -17,13 +17,25 @@ angular.module('relationshipMinder')
         .controller('RelationshipMinderController', RelationshipMinderController)
 
 var contactList = [('jack','doe','test1@gmail.com'),('jo','smith','test2@gmail.com')]
-var 
+console.log(contactList);
 
 // // this factory stores data outside of the controller(s)
 // function contactFactory(){
 //     var contactList = [ ]
 //     return(contactList)
 //   }
+
+function googlePeopleAPIcontroller($http){
+  var GoogAPI = this
+
+  $http.get('https://accounts.google.com/o/oauth2/v2/auth?client_id=199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com&response_type=token&redirect_uri=https://thekidgarage.com/membership/&scope=email%20profile', {cache: true})
+    .then(function(response){
+      console.log(response.data)
+    })
+}
+googlePeopleAPIcontroller()
+
+
 
 function RelationshipMinderController (){
   var rmCont = this
@@ -39,11 +51,16 @@ function RelationshipMinderController (){
       this.daysOverdue = daysOverdue;
   }
 
-  //this function is going to add connect to the API and add the contacts to the contactList array
-  function contactBucket(){
-
-    console.log(contactList.name);
+  // this function will create and push new contact objects to the contactList array
+  function contactPush (){
+    rmCont.contactList.push()
   }
+
+  //this function is going to add connect to the API and add the contacts to the contactList array
+  // function contactBucket(){
+  //
+  //   console.log(contactList.name);
+  // }
 
 
 
@@ -66,10 +83,10 @@ function RelationshipMinderController (){
   }
 
   //this function is going to add the number of days overdue to the alertArray
-  function (){
-
-    console.log(contactList.name);
-  }
+  // function (){
+  //
+  //   console.log(contactList.name);
+  // }
 
 
 }
