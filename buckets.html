@@ -1,9 +1,12 @@
 <!-- ================================================================== -->
 <!-- Bucketing your contacts -->
 <!-- ================================================================== -->
+<div class="timer">
+  <h1>{{countdown}}</h1>
+</div>
 <div class="bucketing">
   <div class="" ng-repeat="contact in rmCont.contactList">
-            <h2>{{}}</h2>
+            <h2>{{contactList.name}}</h2>
   </div>
   <div class="buckets row">
     <div class="span2">
@@ -41,6 +44,6 @@
 
 
   </div>
-  <p><a class="btn btn-primary btn-large" ui-sref="getting-started.notifications"> Set Notifications &raquo;</a></p>
+  <p><a class="btn btn-primary btn-large" ui-sref="notifications"> Set Notifications &raquo;</a></p>
 
 </div>

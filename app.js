@@ -15,8 +15,8 @@ angular.module('relationshipMinder', ['ngAnimate', 'ui.router'])
 angular.module('relationshipMinder')
         .controller('RelationshipMinderController', RelationshipMinderController)
 
-var contactList = []
-console.log(contactList);
+var contactList = [('jack','doe','test1@gmail.com'),('jo','smith','test2@gmail.com')]
+
 
 // // this factory stores data outside of the controller(s)
 // function contactFactory(){
@@ -40,9 +40,9 @@ function RelationshipMinderController (){
 
   // factory to turn our contacts into objects with durations
   function contactBucket(){
-    console.log(contactList);
+    console.log(contactList.name);
   }
-
+contactBucket()
 }
 
 
@@ -56,7 +56,6 @@ function RelationshipMinderController (){
 
       // catch all route
       // send users to the landing page
-      $urlRouterProvider.otherwise('/landing');
 
       $stateProvider
       // Route to show the landing page
@@ -72,19 +71,19 @@ function RelationshipMinderController (){
         // nested states
         // each of these sections will have their own view
         // url will be nested (/getting-started/connect)
-       .state('getting-started.connect', {
+       .state('connect', {
            url: '/connect',
            templateUrl: 'connect.html'
        })
 
        // url will be /getting-started/buckets
-       .state('getting-started.buckets', {
+       .state('buckets', {
            url: '/buckets',
            templateUrl: 'buckets.html'
        })
 
        // url will be /getting-started/notifications
-       .state('getting-started.notifications', {
+       .state('notifications', {
            url: '/notifications',
            templateUrl: 'notifications.html'
        })
@@ -95,6 +94,7 @@ function RelationshipMinderController (){
            templateUrl: 'activity-feed.html'
        });
 
+       $urlRouterProvider.otherwise('/landing');
     })
 
 
