@@ -6,9 +6,10 @@
   <div class="timer">
     <h1>{{countdown}}</h1>
   </div>
-  <div ng-model="contactObject in vmRMCtrl.fakeGoogleArray" class="">
+  <div class="">
     <div class="">
-      <span class="">TEXT{{vmRMCtrl.fakeGoogleArray}}</span>
+      <!-- <span class="">TEXT{{vmRMCtrl.googList[0].firstName}}</span> -->
+      <span class="">TEXT{{vmRMCtrl.googList[vmRMCtrl.OnDeck].firstName + ' ' +vmRMCtrl.googList[vmRMCtrl.OnDeck].lastName}}</span>
     </div>
   </div>
   <div class="bucketing">
@@ -52,7 +53,7 @@
 
 
   </div>
-  <p><a class="btn btn-primary btn-large" ui-sref="notifications"> Set Notifications &raquo;</a></p>
+  <p><a class="btn btn-primary btn-large" ui-sref="activity-feed"> View Notifications &raquo;</a></p>
 
   </div>
 </div>
