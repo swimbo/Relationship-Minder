@@ -38,20 +38,35 @@
   padding: 10px;
   border-radius: 10px;
 }
+
 footer {
   margin-top: 100px;
 }
 
-/*button text change*/
-#emailButton.collapsed:before
-{
-    background-color: red;
-    display:block;
-    width:15px;
+.steps{
+
+  width: 100%;
 }
-button:before
-{
-    background-color: green;
-    display:block;
-    width:15px;
+
+.steps div{
+  margin-left: 20%;
+  margin-bottom: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.numberCircle {
+    border-radius: 50%;
+
+    width: 120px;
+    height: 120px;
+    padding-bottom: 10px;
+
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+
+
+    font: 96px Arial;
 }
