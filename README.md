@@ -4,11 +4,11 @@ Web application to help people maintain stronger relationships using sorting and
 ## How it works:
 The user walks through three simple set up steps that consist of connecting their email account, bucketing their contacts based on desired frequency of contact, and then setting up notification by bucket. They are then shown a feed of all contacts who are 'overdue' for contact based on the date of last contact.
 
-#### Technologies used: HTML / CSS / Javascript
+### Technologies used: HTML / CSS / Javascript
 
-## Frameworks used: Angular.js, Bootstrap, Angular UI Router
+#### Frameworks used: Angular.js, Bootstrap, Angular UI Router
 
-## Libraries/Dependencies: jQuery, datejs, ngAnimate
+##### Libraries/Dependencies: jQuery, datejs, ngAnimate
 
 ## Development process:
 
