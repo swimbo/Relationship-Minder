@@ -1,13 +1,21 @@
 <!-- ================================================================== -->
 <!-- Bucketing your contacts -->
 <!-- ================================================================== -->
-<div class="timer">
-  <h1>{{countdown}}</h1>
-</div>
-<div class="bucketing">
-  <div class="" ng-repeat="contact in rmCont.contactList">
-            <h2>{{contactList.name}}</h2>
+<div class="main-content" ng-controller="RelationshipMinderController as vmRMCtrl">
+
+  <div class="timer">
+    <h1>{{countdown}}</h1>
   </div>
+  <div ng-model="contactObject in fakeGoogleArray" class="">
+    <div class="">
+      <span class="">TEXT{{vmRMCtrl.firstName}}</span>
+    </div>
+  </div>
+  <div class="bucketing">
+  <!-- <div class="" ng-model="contact in rmCont.fakeGoogleArray"> -->
+  <!-- <div class="" ng-model="fakeGoogleArray.firstName">
+            <h1>TEXT{{}}</h1>
+  </div> -->
   <div class="buckets row">
     <div class="span2">
       <br><br><br><br><br><br><br>
@@ -20,22 +28,22 @@
       <h4 class="text-center">a</h4>
     </div>
     <div class="span2">
-      <img src="Water-Bucket.png" alt="30 day bucket"/>
+      <img src="Water-Bucket.png" alt="60 day bucket"/>
       <h3 class="text-center">60</h3>
       <h4 class="text-center">s</h4>
     </div>
     <div class="span2">
-      <img src="Water-Bucket.png" alt="30 day bucket"/>
+      <img src="Water-Bucket.png" alt="90 day bucket"/>
       <h3 class="text-center">90</h3>
       <h4 class="text-center">d</h4>
     </div>
     <div class="span2">
-      <img src="Water-Bucket.png" alt="30 day bucket"/>
+      <img src="Water-Bucket.png" alt="180 day bucket"/>
       <h3 class="text-center">180</h3>
       <h4 class="text-center">f</h4>
     </div>
     <div class="span2">
-      <img src="Water-Bucket.png" alt="30 day bucket"/>
+      <img src="Water-Bucket.png" alt="Yearly bucket"/>
       <h3 class="text-center">Yrly</h3>
       <h4 class="text-center">g</h4>
     </div>
@@ -46,4 +54,5 @@
   </div>
   <p><a class="btn btn-primary btn-large" ui-sref="notifications"> Set Notifications &raquo;</a></p>
 
+  </div>
 </div>

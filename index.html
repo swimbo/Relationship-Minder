@@ -27,7 +27,7 @@
   <script type="text/javascript" src="app.js"></script>
 </head>
 
-<body ng-controller="RelationshipMinderController as rmCont">
+<body ng-controller="RelationshipMinderController as vmRMCtrl">
     <!-- ================================================================== -->
     <!-- Navigation bar -->
     <!-- ================================================================== -->
@@ -64,8 +64,12 @@
     <div ui-view>
 
     </div>
-
-
+    <div ng-repeat="contactObject in vmRMCtrl.fakeGoogleArray" class="">
+      <div class="">
+        <span class="">TEXT{{vmRMCtrl}}</span>
+      </div>
+    </div>
+TEXT3{{vmRMCtrl}}
     <!-- ================================================================== -->
     <!-- Footer -->
     <!-- ================================================================== -->
