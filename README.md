@@ -1,14 +1,14 @@
 # Relationship-Minder
 Web application to help people maintain stronger relationships using sorting and reminders
 
-How it works:
+## How it works:
 The user walks through three simple set up steps that consist of connecting their email account, bucketing their contacts based on desired frequency of contact, and then setting up notification by bucket. They are then shown a feed of all contacts who are 'overdue' for contact based on the date of last contact.
 
-Development process:
+## Development process:
 
-Technologies used: HTML / CSS / Javascript
+## Technologies used: HTML / CSS / Javascript
 
-Frameworks used: Angular.js, Bootstrap, jQuery, Angular UI Router, ngAnimate
+## Frameworks used: Angular.js, Bootstrap, jQuery, Angular UI Router, ngAnimate
 
 User Stories
 As a user I want to connect my email account and import my existing contacts so that I don't have to manually add them.
