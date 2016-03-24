@@ -41,64 +41,49 @@
     console.log(vmRMCtrl);
 
     //object constructor to create new contact objects based on API connections and/or front-end clicks/actions
-    function contactItem(firstName, lastName, email, lastContact, bucket, overdue, daysOverdue) {
+    function contactItem(firstName, lastName, email, lastContact, bucket, overdue, daysSince) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
       this.lastContact = lastContact;
       this.bucket = bucket;
       this.overdue = overdue;
-      this.daysOverdue = daysOverdue;
+      this.daysSince = daysSince;
     }
 
-    //fake contacts for testing
-    var contact1 = new contactItem('firstname1', 'lastname1', 'test1@gmail.com', "2015-12-05")
-    var contact2 = new contactItem('firstname2', 'lastname2', 'test2@gmail.com', "2015-03-05")
-    var contact3 = new contactItem('firstname3', 'lastname3', 'test3@gmail.com', "2016-02-05")
-    var contact4 = new contactItem('firstname4', 'lastname4', 'test4@gmail.com', "2016-03-05")
-    var contact5 = new contactItem('firstname5', 'lastname5', 'test5@gmail.com', "2014-12-05")
-
-    //fake array for testing
-    vmRMCtrl.googList = [contact1, contact2, contact3, contact4, contact5]
-    console.log(vmRMCtrl.googList[0].firstName);
 
     // =======================================================//
     // Contacts Page starts here
     // =======================================================//
-//
-// formattedTime = function(formatString){
-//   var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhhh,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
-//   YY = ((YYYY=this.getFullYear())+"").slice(-2);
-//   MM = (M=this.getMonth()+1)<10?('0'+M):M;
-//   MMM = (MMMM=["January","February","March","April","May","June","July","August","September","October","November","December"][M-1]).substring(0,3);
-//   DD = (D=this.getDate())<10?('0'+D):D;
-//   DDD = (DDDD=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][this.getDay()]).substring(0,3);
-//   th=(D>=10&&D<=20)?'th':((dMod=D%10)==1)?'st':(dMod==2)?'nd':(dMod==3)?'rd':'th';
-//   formatString = formatString.replace("#YYYY#",YYYY).replace("#YY#",YY).replace("#MMMM#",MMMM).replace("#MMM#",MMM).replace("#MM#",MM).replace("#M#",M).replace("#DDDD#",DDDD).replace("#DDD#",DDD).replace("#DD#",DD).replace("#D#",D).replace("#th#",th);
-//   h=(hhh=this.getHours());
-//   if (h==0) h=24;
-//   if (h>12) h-=12;
-//   hh = h<10?('0'+h):h;
-//   hhhh = h<10?('0'+hhh):hhh;
-//   AMPM=(ampm=hhh<12?'am':'pm').toUpperCase();
-//   mm=(m=this.getMinutes())<10?('0'+m):m;
-//   ss=(s=this.getSeconds())<10?('0'+s):s;
-//   return formatString.replace("#hhhh#",hhhh).replace("#hhh#",hhh).replace("#hh#",hh).replace("#h#",h).replace("#mm#",mm).replace("#m#",m).replace("#ss#",ss).replace("#s#",s).replace("#ampm#",ampm).replace("#AMPM#",AMPM);
-// };
-//
-// var now = new Date;
-// console.log( now.formattedTime( "#DD#/#MM#/#YYYY# #hh#:#mm#:#ss#" ) );
-//
-//
-//   customformat(1294862756114)
+    //fake contacts for testing. To be replaced by Google API data
+    var contact1 = new contactItem('firstname1', 'lastname1', 'test1@gmail.com', 1332302400000)
+    var contact2 = new contactItem('firstname2', 'lastname2', 'test2@gmail.com', 1294862756114)
+    var contact3 = new contactItem('firstname3', 'lastname3', 'test3@gmail.com',  878404500000)
+    var contact4 = new contactItem('firstname4', 'lastname4', 'test4@gmail.com', 1332302400000)
+    var contact5 = new contactItem('firstname5', 'lastname5', 'test5@gmail.com', 1458799200000)
 
-function overdueCalc(lastContact){
-  var dateArray = vmRMCtrl.googList[0].lastContact.split("-")
-  console.log(dateArray);
-}
-overdueCalc()
+    //fake array for testing.
+    vmRMCtrl.googList = [contact1, contact2, contact3, contact4, contact5]
+    console.log(vmRMCtrl.googList[0].firstName);
 
-// vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = bucketValue
+    // For todays date (via the datejs library);
+    var dateToday = Date.today()
+    var dateMilliseconds = dateToday.getTime()
+
+    function overdueAmt(){
+      for(var i = 0; i < vmRMCtrl.googList.length; i++){
+        var millisecondsOverdue = dateMilliseconds - vmRMCtrl.googList[i].lastContact
+        var daysSince = (millisecondsOverdue / 86400000)
+        vmRMCtrl.googList[i].daysSince = daysSince
+// ***** I need to add something in here (maybe?) so that WHEN there are no more contacts they are prompted to click the button.
+
+      }
+
+    }
+    // To simulate loading contacts, I should call this after click of "add contacts" and google auth. Putting here for now.
+    overdueAmt()
+
+//
 
     // =======================================================//
     // Buckets Page starts here
@@ -110,8 +95,16 @@ overdueCalc()
     //bucketing function on click assign bucket value to appropriate key value pair AND call next one
     function nextContact (){
       if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-        vmRMCtrl.OnDeck++
+        console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
+        // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
+        if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
+          vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
+        }
+        else{
+          vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
+        }
         if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+            vmRMCtrl.OnDeck++
             nextContact()
         }
 
@@ -120,7 +113,6 @@ overdueCalc()
     }
     //this function is going to add the bucket information to the contact objects
     vmRMCtrl.contactBucket = function (bucketValue) {
-      console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck-1]);
       vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
       nextContact()
     }

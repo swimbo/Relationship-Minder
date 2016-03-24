@@ -6,7 +6,7 @@
 
   <div class="list-group">
 
-    <button type="button" class="list-group-item span8 offset-2" ng-repeat="contact in vmRMCtrl.googList | filter: contact.overdue = true">{{Cras justo odio }}<span class="badge">14</span></button>
+    <button type="button" class="list-group-item span8 offset-2" ng-repeat="contact in vmRMCtrl.googList | filter: contact.overdue = true">{{contact.firstName + ' ' +contact.lastName}}<span class="badge">{{contact.daysSince}}</span></button>
 
   </div>
 
