@@ -8,7 +8,7 @@ The user walks through three simple set up steps that consist of connecting thei
 
 #### Frameworks used: Angular.js, Bootstrap, Angular UI Router
 
-##### Libraries/Dependencies: jQuery, datejs, ngAnimate
+#### Libraries/Dependencies: jQuery, datejs, ngAnimate
 
 ## Development process:
 

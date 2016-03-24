@@ -74,7 +74,7 @@
       for(var i = 0; i < vmRMCtrl.googList.length; i++){
         var millisecondsOverdue = dateMilliseconds - vmRMCtrl.googList[i].lastContact
         var daysSince = (millisecondsOverdue / 86400000)
-        vmRMCtrl.googList[i].daysSince = daysSince
+        vmRMCtrl.googList[i].daysSince = Math.round(daysSince)
 // ***** I need to add something in here (maybe?) so that WHEN there are no more contacts they are prompted to click the button.
 
       }
@@ -82,6 +82,7 @@
     }
     // To simulate loading contacts, I should call this after click of "add contacts" and google auth. Putting here for now.
     overdueAmt()
+
 
 //
 

@@ -7,10 +7,12 @@
   <title>Relationship Minder</title>
   <meta name="description" content="Relationship Minder">
   <meta name="Bo Bergstrom" content="Angular App">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="main.css?v=1.0">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css">
+
   <!-- Load up JS including Angular -->
   <script src="Angular/angular.js" charset="utf-8"></script>
   <script type="text/javascript" src="Angular/angular-animate.js"></script>
@@ -34,16 +36,14 @@
     <!-- ================================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
+      <div class="container-fluid">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
         <a class="brand" href="#">Relationship Minder</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="active"><a ui-sref="landing">Home</a></li>
             <li><a ui-sref="getting-started">Getting Started</a></li>
             <li><a ui-sref="activity-feed">Activity Feed</a></li>
 
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div class="container main-content">
+  <div class="container-fluid main-content">
     <!-- ================================================================== -->
     <!-- Interactive web application begins here via angular ui router injection-->
     <!-- ================================================================== -->
