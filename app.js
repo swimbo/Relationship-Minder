@@ -58,11 +58,10 @@
     var contact4 = new contactItem('firstname4', 'lastname4', 'test4@gmail.com')
     var contact5 = new contactItem('firstname5', 'lastname5', 'test5@gmail.com')
 
-   function fakeGoogleArray(){
-     var fakeGoogleArray = [contact1, contact2, contact3, contact4, contact5]
-     return fakeGoogleArray
-   }
-   fakeGoogleArray()
+
+    vmRMCtrl.fakeGoogleArray = [contact1, contact2, contact3, contact4, contact5]
+    
+
     // this function will create and push new contact objects to the contactList array
     // rmCont.contactPush = function () {
     //   var firstNameArray = []

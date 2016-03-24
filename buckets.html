@@ -1,14 +1,14 @@
 <!-- ================================================================== -->
 <!-- Bucketing your contacts -->
 <!-- ================================================================== -->
-<div class="main-content" ng-controller="RelationshipMinderController as vmRMCtrl">
+<div class="main-content">
 
   <div class="timer">
     <h1>{{countdown}}</h1>
   </div>
-  <div ng-model="contactObject in fakeGoogleArray" class="">
+  <div ng-model="contactObject in vmRMCtrl.fakeGoogleArray" class="">
     <div class="">
-      <span class="">TEXT{{vmRMCtrl.firstName}}</span>
+      <span class="">TEXT{{vmRMCtrl.fakeGoogleArray}}</span>
     </div>
   </div>
   <div class="bucketing">
