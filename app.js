@@ -52,7 +52,7 @@
     }
 
     //fake contacts for testing
-    var contact1 = new contactItem('firstname1', 'lastname1', 'test1@gmail.com', 30)
+    var contact1 = new contactItem('firstname1', 'lastname1', 'test1@gmail.com')
     var contact2 = new contactItem('firstname2', 'lastname2', 'test2@gmail.com')
     var contact3 = new contactItem('firstname3', 'lastname3', 'test3@gmail.com')
     var contact4 = new contactItem('firstname4', 'lastname4', 'test4@gmail.com')
@@ -78,6 +78,7 @@
     }
     //this function is going to add the bucket information to the contact objects
     vmRMCtrl.contactBucket = function (bucketValue) {
+      console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck-1]);
       vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
       nextContact()
     }
