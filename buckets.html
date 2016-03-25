@@ -17,6 +17,7 @@
   <div class="toBucketName row">
     <div class="span12 text-center">
       <span class=""><h1>{{vmRMCtrl.googList[vmRMCtrl.OnDeck].firstName + ' ' +vmRMCtrl.googList[vmRMCtrl.OnDeck].lastName}}</h1></span>
+      <span class="" ng-show="!vmRMCtrl.checkBtnStatus()"><h2>All done! <br> Click on the button below to see who you need to contact!</h2></span>
     </div>
   </div>
   <div class="bucketing text-center">
@@ -57,7 +58,7 @@
 
   <div class="">
 
-    <p class="text-center"><a class="btn btn-primary btn-large bucket-button" ui-sref="activity-feed"> View Notifications &raquo;</a></p>
+    <p class="text-center"><a class="btn btn-primary btn-large bucket-button" ng-disabled="vmRMCtrl.checkBtnStatus()" ui-sref="activity-feed"> View Notifications &raquo;</a></p>
 
   </div>
 

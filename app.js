@@ -95,8 +95,19 @@
     vmRMCtrl.OnDeck = 0
     // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
 
+    // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
+    vmRMCtrl.checkBtnStatus = function() {
+      if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+        return true
+      }
+      else {
+        return false
+      }
+    }
+
     //bucketing function on click assign bucket value to appropriate key value pair AND call next one
     function nextContact (){
+      vmRMCtrl.checkBtnStatus()
       if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
         console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
         // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
@@ -109,7 +120,12 @@
         if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
             vmRMCtrl.OnDeck++
             nextContact()
+
         }
+        // else{
+        //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
+        //   console.log(vmRMCtrl.lastMessage);
+        // }
 
       }
 
@@ -120,6 +136,9 @@
       nextContact()
     }
     nextContact()
+
+
+    // vmRMCtrl.checkBtnStatus()
 
     //this function is going to connect to the API and add the contacts to the contactList array
     // function contactBucket(){
