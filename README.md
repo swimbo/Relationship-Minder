@@ -26,3 +26,4 @@ As a user I want to be able to receive notifications via my phone's built in/nat
 As a user I want the app to automatically update the last contacted date when I make a phone call.
 As a user I want the app to automatically update the last contacted date when I send them an email.
 As a user I want to be able to add an outlook account.
+As a user I want the notifications to be color coded so that I can quickly action the red ones.
