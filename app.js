@@ -4,26 +4,13 @@
   // Declare the module
   //======================================================//
   angular.module('relationshipMinder', ['ngAnimate', 'ui.router'])
-  // // =======================================================//
-  // // Declare the factory
-  // // =======================================================//
-  // angular.module('relationshipMinder')
-  //         .factory('contactFactory', contactFactory)
-  //
+
   // =======================================================//
   // Declare our controller for the webapp flow
   // =======================================================//
   angular.module('relationshipMinder')
     .controller('RelationshipMinderController', RelationshipMinderController)
 
-  // =======================================================//
-  // this factory stores data outside of the controller(s)
-  // =======================================================//
-
-    // function contactFactory() {
-    //   var googList = []
-    //   return (googList)
-    // }
 
   function RelationshipMinderController() {
     var vmRMCtrl = this

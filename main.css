@@ -31,7 +31,6 @@
   margin-bottom: 50px;
 }
 
-
 .nav li{
   background-color: #000;
 }
@@ -64,11 +63,15 @@
 .landing-info{
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #acacac;
+  background-color: light gray;
 }
 
 .list-group2 {
   padding:50px 0px;
+}
+
+.spacer{
+  height: 40vw;
 }
 
 .footer-inverse{
@@ -88,7 +91,7 @@
   margin-bottom: 10px;
 }
 .steps{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
