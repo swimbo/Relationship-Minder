@@ -66,7 +66,7 @@ footer {
 
     width: 120px;
     height: 120px;
-    margin-bottom: 20px;
+    margin: 20px;
 
     background: #fff;
     border: 2px solid #666;
@@ -79,18 +79,22 @@ footer {
 /* Connect page styling*/
 /*******************************************************/
 
-/*.dropdown:after{
-  left: 50%;
-  right: auto;
-  text-align: center;
-  transform: translate(50%, 0);
-}*/
-.dropdown-menu {
-  left: 60%;
-  right: auto;
-  text-align: center;
-  transform: translate(60%, 0);
+#dropdown-ul-menu-override{
+  position: relative;
+  float: none;
+  /*text-align: center;*/
+  width: 180px;
 }
+/*
+#dropdown-li-menu-override{
+  text-align: center;
+  width: 160px;
+}
+
+#dropdown-a-menu-override{
+  text-align: center;
+  mwidth: 160px;
+}*/
 
 
 
