@@ -34,14 +34,14 @@
     <!-- ================================================================== -->
     <!-- Navigation bar -->
     <!-- ================================================================== -->
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container-fluid">
+  <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="navbar-inner" id="navbar-inner">
+      <div class="">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="brand" href="#">Relationship Minder</a>
+        <a class="brand" id="navbar-brand" href="#">Relationship Minder</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li><a ui-sref="getting-started">Getting Started</a></li>
@@ -58,18 +58,14 @@
     </div>
   </div>
 
-  <div class="container-fluid main-content">
+  <div class="main-content">
     <!-- ================================================================== -->
     <!-- Interactive web application begins here via angular ui router injection-->
     <!-- ================================================================== -->
     <div ui-view>
 
-    <!-- </div>
-    <div ng-repeat="googList in vmRMCtrl" class="">
-      <div class="">
-        <span class="">TEXT{{googList[0].firstName}}</span>
-      </div>
-    </div> -->
+    </div>
+
     <!-- ================================================================== -->
     <!-- Footer -->
     <!-- ================================================================== -->

@@ -74,3 +74,66 @@ googlePeopleAPIcontroller()
 
 
 //people.people.connections.list	Google People API v1	Provides a list of the authenticated user's contacts merged with any linked profiles.
+
+
+// other versions i found: 
+
+function gPOnLoad(){
+     // G+ api loaded
+     document.getElementById('gp_login').style.display = 'block';
+}
+vmRMCtrl.googleAuth = function() {
+    gapi.auth.signIn({
+        callback: gPSignInCallback,
+        clientid: googleKey,
+        cookiepolicy: "single_host_origin",
+        requestvisibleactions: "http://schema.org/AddAction",
+        scope: "https://www.googleapis.com/auth/plus.login email"
+    })
+}
+
+function gPSignInCallback(e) {
+    if (e["status"]["signed_in"]) {
+        gapi.client.load("plus", "v1", function() {
+            if (e["access_token"]) {
+                getProfile()
+            } else if (e["error"]) {
+                console.log("There was an error: " + e["error"])
+            }
+        })
+    } else {
+        console.log("Sign-in state: " + e["error"])
+    }
+}
+
+function getProfile() {
+    var e = gapi.client.plus.people.get({
+        userId: "me"
+    });
+    e.execute(function(e) {
+        if (e.error) {
+            console.log(e.message);
+            return
+        } else if (e.id) {
+            // save profile data
+        }
+    })
+}(function() {
+    var e = document.createElement("script");
+    e.type = "text/javascript";
+    e.async = true;
+    e.src = "https://apis.google.com/js/client:platform.js?onload=gPOnLoad";
+    var t = document.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(e, t)
+})()
+
+
+
+vmRMCtrl.googlePeopleAPIcontroller($http){
+  var GoogAPI = this
+
+  $http.get('https://accounts.google.com/o/oauth2/v2/auth?client_id=199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com&response_type=token&redirect_uri=https://thekidgarage.com/membership/&scope=email%20profile', {cache: true})
+    .then(function(response){
+      console.log(response.data)
+    })
+}

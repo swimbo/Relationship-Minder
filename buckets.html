@@ -1,12 +1,12 @@
 <!-- ================================================================== -->
 <!-- Bucketing your contacts -->
 <!-- ================================================================== -->
-<div class="main-content">
+<div class="main-content container">
   <div class="steps row text-center first-div">
     <div class="numberCircle smallerCircle col-xs-6 col-md-4">2</div>
     <div class="started-text buckets-text col-xs-12 col-md-8">
       Bucket your contacts
-    <h5>(based on how often you want to contact them)</h5>
+      <h5>(based on how often you want to contact them)</h5>
     </div>
 
   </div>
@@ -19,44 +19,47 @@
       <span class=""><h1>{{vmRMCtrl.googList[vmRMCtrl.OnDeck].firstName + ' ' +vmRMCtrl.googList[vmRMCtrl.OnDeck].lastName}}</h1></span>
     </div>
   </div>
-  <div class="bucketing">
-  <div class="buckets row">
-    <div class="span2">
-      <br><br><br><br><br><br><br>
-      <h3 class="text-center">Days</h3>
-      <h4 class="text-center">Keystroke</h4>
+  <div class="bucketing text-center">
+    <div class="buckets row text-center">
+      <!-- <div class="span2">
+        <br><br><br><br><br><br><br>
+        <h3 class="text-center">Days</h3>
+        <h4 class="text-center">Keystroke</h4>
+      </div> -->
+      <div class="col-1" ng-click="vmRMCtrl.contactBucket(30)">
+        <img src="Water-Bucket.png" alt="30 day bucket" />
+        <h3 class="text-center">30</h3>
+        <!-- <h4 class="text-center">a</h4> -->
+      </div>
+      <div class="col-1" ng-click="vmRMCtrl.contactBucket(60)">
+        <img src="Water-Bucket.png" alt="60 day bucket" />
+        <h3 class="text-center">60</h3>
+        <!-- <h4 class="text-center">s</h4> -->
+      </div>
+      <div class="col-1" ng-click="vmRMCtrl.contactBucket(90)">
+        <img src="Water-Bucket.png" alt="90 day bucket" />
+        <h3 class="text-center">90</h3>
+        <!-- <h4 class="text-center">d</h4> -->
+      </div>
+      <div class="col-1" ng-click="vmRMCtrl.contactBucket(180)">
+        <img src="Water-Bucket.png" alt="180 day bucket" />
+        <h3 class="text-center">180</h3>
+        <!-- <h4 class="text-center">f</h4> -->
+      </div>
+      <div class="col-1" ng-click="vmRMCtrl.contactBucket(365)">
+        <img src="Water-Bucket.png" alt="Yearly bucket" />
+        <h3 class="text-center">Yrly</h3>
+        <!-- <h4 class="text-center">g</h4> -->
+      </div>
     </div>
-    <div class="span2">
-      <img src="Water-Bucket.png" alt="30 day bucket" ng-click="vmRMCtrl.contactBucket(30)"/>
-      <h3 class="text-center">30</h3>
-      <h4 class="text-center">a</h4>
-    </div>
-    <div class="span2">
-      <img src="Water-Bucket.png" alt="60 day bucket" ng-click="vmRMCtrl.contactBucket(60)"/>
-      <h3 class="text-center">60</h3>
-      <h4 class="text-center">s</h4>
-    </div>
-    <div class="span2">
-      <img src="Water-Bucket.png" alt="90 day bucket" ng-click="vmRMCtrl.contactBucket(90)"/>
-      <h3 class="text-center">90</h3>
-      <h4 class="text-center">d</h4>
-    </div>
-    <div class="span2">
-      <img src="Water-Bucket.png" alt="180 day bucket" ng-click="vmRMCtrl.contactBucket(180)"/>
-      <h3 class="text-center">180</h3>
-      <h4 class="text-center">f</h4>
-    </div>
-    <div class="span2">
-      <img src="Water-Bucket.png" alt="Yearly bucket" ng-click="vmRMCtrl.contactBucket(365)"/>
-      <h3 class="text-center">Yrly</h3>
-      <h4 class="text-center">g</h4>
-    </div>
+  </div>
 
 
+  <div class="">
 
+    <p class="text-center"><a class="btn btn-primary btn-large bucket-button" ui-sref="activity-feed"> View Notifications &raquo;</a></p>
 
   </div>
-  <p><a class="btn btn-primary btn-large" ui-sref="activity-feed"> View Notifications &raquo;</a></p>
 
-  </div>
+
 </div>
