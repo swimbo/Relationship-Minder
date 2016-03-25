@@ -47,13 +47,14 @@
     var contact1 = new contactItem('Poor Old', 'Grandma', 'test1@gmail.com', '555-555-5555', 1332302400000)
     var contact2 = new contactItem('Raider', 'Hater', 'test2@gmail.com', '555-555-5555', 1368799200000)
     var contact3 = new contactItem('John', 'Smellway', 'test3@gmail.com', '555-555-5555', 1455509900000)
-    var contact4 = new contactItem('Coding', 'is Hard', 'test4@gmail.com', '555-555-5555', 1438999200000)
-    var contact5 = new contactItem('Best', 'Friend', 'test5@gmail.com', '555-555-5555', 1457899200000)
-
+    var contact4 = new contactItem('Joe', 'Namath', 'test4@gmail.com', '555-555-5555', 1438999200000)
+    var contact5 = new contactItem('Amos', 'Lee', 'test5@gmail.com', '555-555-5555', 1457899200000)
+    var contact6 = new contactItem('Coding', 'is Hard', 'test6@gmail.com', '555-555-5555', 1437999200000)
+    var contact7 = new contactItem('Best', 'Friend', 'test7@gmail.com', '555-555-5555', 1457999200000)
     //fake array for testing.
-    vmRMCtrl.googList = [contact1, contact2, contact3, contact4, contact5]
+    vmRMCtrl.googList = [contact1, contact2, contact3, contact4, contact5, contact6, contact7]
     console.log(vmRMCtrl.googList[0].firstName);
-
+    console.log(vmRMCtrl.googList);
     // For todays date (via the datejs library);
     var dateToday = Date.today()
     var dateMilliseconds = dateToday.getTime()
