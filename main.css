@@ -75,6 +75,10 @@
   border-radius: 5px;
 }
 
+.who h3{
+  min-width: 220px;
+}
+
 .first-div{
   margin-top: 45px;
 }
@@ -84,7 +88,7 @@
   color: #ECECEC;
 }
 .landing-info div{
-  padding: 60px;
+  padding: 80px;
 }
 
 .list-group2 {
@@ -178,8 +182,20 @@
 /* Buckets page styling*/
 /*******************************************************/
 
+.brackets-enclosure{
+  display: inline;;
+}
 .buckets-text{
   bottom: 0px;
+  top: 44px;
+  margin-bottom: 100px;
+}
+.bucket-instructions{
+  margin-top: 10px;
+  font-size: 16px;
+}
+.buckets-text span{
+  font-size: 46px;
 }
 .buckets{
   align-items: center;
