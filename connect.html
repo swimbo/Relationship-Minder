@@ -2,16 +2,23 @@
 <!-- Connecting to email here -->
 <!-- ================================================================== -->
 <div class="container-fluid">
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Email Providers
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com&response_type=token&redirect_uri=https://thekidgarage.com/membership/&scope=email%20profile" ui-sref="buckets">Gmail</a></li>
-      <li><a ui-sref="buckets">Outlook</a></li>
-    </ul>
+  <div class="text-center">
+    <div class="connect-text">
+      <h2>Please connect your email account</h2>
+      <h4>(we will not email you or any of your contacts - we hate spam)</h4>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle text-center" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Email Providers
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenu1">
+        <li><a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com&response_type=token&redirect_uri=https://thekidgarage.com/membership/&scope=email%20profile" ui-sref="buckets">Gmail</a></li>
+        <li><a ui-sref="buckets">Outlook (coming soon)</a></li>
+      </ul>
+    </div>
+    <br><br><br><br>
+    <p><a class="btn btn-primary btn-large" ui-sref="buckets"> Add to Buckets &raquo;</a></p>
   </div>
-  <br><br><br><br>
-  <p><a class="btn btn-primary btn-large" ui-sref="buckets"> Add to Buckets &raquo;</a></p>
+
 </div>

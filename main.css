@@ -10,9 +10,10 @@
   display:table;
   clear:both;
 }*/
-.hero-unit{
-  margin-top: 100px;
-}
+/*******************************************************/
+/*landing page styling*/
+/*******************************************************/
+
 .hero-unit p{
   margin-top: 30px;
 }
@@ -31,18 +32,17 @@
 .list-group2 {
   padding:50px 0px;
 }
-.card-block{
-  border: 1px solid black;
-  display: inline-block;
-  margin: 30px;
-  padding: 10px;
-  border-radius: 10px;
-}
 
 footer {
   margin-top: 100px;
 }
 
+/*******************************************************/
+/*Getting Started page styling*/
+/*******************************************************/
+.started-title h3{
+  margin-bottom: 30px;
+}
 .steps{
   margin-bottom: 20px;
   width: 100%;
@@ -58,7 +58,7 @@ footer {
   color: #666;
   font-size: 35px;
   height: 50px;
-
+  width: 335px;
 }
 
 .numberCircle {
@@ -74,4 +74,33 @@ footer {
     text-align: center;
 
     font: 96px Arial;
+}
+/*******************************************************/
+/* Connect page styling*/
+/*******************************************************/
+
+/*.dropdown:after{
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(50%, 0);
+}*/
+.dropdown-menu {
+  left: 60%;
+  right: auto;
+  text-align: center;
+  transform: translate(60%, 0);
+}
+
+
+
+/*******************************************************/
+/* Notification Feed page styling*/
+/*******************************************************/
+.card-block{
+  border: 1px solid black;
+  display: inline-block;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 10px;
 }
