@@ -22,13 +22,10 @@
   padding-left: 60px;
 }
 
-.main-content{
-  margin-top: 50px;
+.first-div{
+  margin-top: 80px;
 }
 
-.hero-unit{
-  margin-top: 10px;
-}
 .list-group2 {
   padding:50px 0px;
 }
@@ -54,7 +51,7 @@ footer {
 }
 .started-text{
   position: relative;
-  bottom: 16px;
+  bottom: 18px;
   color: #666;
   font-size: 35px;
   height: 50px;
@@ -62,41 +59,46 @@ footer {
 }
 
 .numberCircle {
-    border-radius: 50%;
+  border-radius: 50%;
 
-    width: 120px;
-    height: 120px;
-    margin: 20px;
+  width: 120px;
+  height: 120px;
+  margin: 20px;
+  font: 96px Arial;
 
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
-    text-align: center;
-
-    font: 96px Arial;
+  background: #fff;
+  border: 2px solid #666;
+  color: #666;
+  text-align: center;
 }
 /*******************************************************/
 /* Connect page styling*/
 /*******************************************************/
 
-#dropdown-ul-menu-override{
-  position: relative;
-  float: none;
-  /*text-align: center;*/
-  width: 180px;
+.dropdown{
+  margin-top: 40px;
 }
-/*
-#dropdown-li-menu-override{
-  text-align: center;
-  width: 160px;
+.open > .dropdown-menu {
+    left: 50%;
+   right: auto;
+   text-align: center;
+   transform: translate(-50%, 0);
 }
 
-#dropdown-a-menu-override{
-  text-align: center;
-  mwidth: 160px;
-}*/
+.smallerCircle{
+  width: 90px;
+  height: 90px;
+  margin: 15px;
+  font: 72px Arial;
+}
 
+/*******************************************************/
+/* Buckets page styling*/
+/*******************************************************/
 
+.buckets-text{
+  bottom: 0px;
+}
 
 /*******************************************************/
 /* Notification Feed page styling*/

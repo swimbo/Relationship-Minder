@@ -3,13 +3,21 @@
 <!-- ================================================================== -->
 
 <div class="container activity-feed">
-
+  <div class="steps row text-center first-div">
+    <div class="numberCircle smallerCircle col-xs-6 col-md-4">3</div>
+    <div class="started-text top-text col-xs-12 col-md-8">
+      Get notifications
+    </div>
+  </div>
 <!-- using cards to show the notifications -->
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 text-center">
       <div class="card card-block text-center" ng-repeat="contact in vmRMCtrl.googList | filter: contact.overdue = true">
         <h3 class="card-title" >{{contact.firstName + ' ' + contact.lastName}}</h3>
         <h4 class="card-text">{{contact.daysSince }} days</h4>
         <a href="mailto:{{contact.email}}" class="btn btn-primary">Email Now</a>
+        <a href="tel:{{contact.phone}}" class="btn btn-primary">Call Now</a>
       </div>
     </div>
+  </div>
+</div>
