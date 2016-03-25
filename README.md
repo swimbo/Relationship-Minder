@@ -25,3 +25,4 @@ As a user I want to be able to override the typical bucket-level notification pr
 As a user I want to be able to receive notifications via my phone's built in/native notifications.
 As a user I want the app to automatically update the last contacted date when I make a phone call.
 As a user I want the app to automatically update the last contacted date when I send them an email.
+As a user I want to be able to add an outlook account.
