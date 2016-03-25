@@ -15,8 +15,9 @@
 /*******************************************************/
 
 #navbar-brand{
-  margin-left: 0px;
+  margin-left: 10px;
 }
+
 #navbar-inner{
   height: 45px;
 }
@@ -27,6 +28,7 @@
   margin-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
+  z-index: 0;
 }
 
 #button-margin{
@@ -44,6 +46,10 @@
 
 #footer-bootstrap-override{
   margin-top: -20px;
+}
+
+.nav{
+  z-index: 100;
 }
 .nav li{
   background-color: #000;
@@ -71,9 +77,9 @@
 }
 
 .who{
-  border: 1px #ECECEC;
-  border-radius: 5px;
-}
+  border-right: 1px solid #ECECEC;
+  padding-left: 40px;
+ }
 
 .who h3{
   min-width: 220px;
@@ -86,14 +92,20 @@
 .landing-info{
   background-color: #3D4A52;
   color: #ECECEC;
+  padding-left: 70px;
 }
 .landing-info div{
-  padding: 80px;
+  padding: 40px;
 }
 
-.list-group2 {
-  padding:50px 0px;
+.landing-spacer{
+  height: 40px;
+  background-color: #3D4A52;
 }
+
+/*.list-group2 {
+  padding:50px 0px;
+}*/
 
 .spacer{
   height: 40vw;
@@ -187,11 +199,12 @@
 }
 .buckets-text{
   bottom: 0px;
-  top: 44px;
+  top: 7px;
   margin-bottom: 100px;
 }
 .bucket-instructions{
-  margin-top: 10px;
+  margin-top: 12px;
+  margin-bottom: 10px;
   font-size: 16px;
 }
 .buckets-text span{
