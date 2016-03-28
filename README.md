@@ -13,19 +13,19 @@ The user walks through three simple set up steps that consist of connecting thei
 ## Development process:
 
 ## User Stories
-..*As a user I want to connect my email account and import my existing contacts so that I don't have to manually add them.
-..*As a user I want to place my contacts into pre-established buckets based on how frequently I want to contact them.
-..*As a user I want to see which of my contacts are overdue.
+..* As a user I want to connect my email account and import my existing contacts so that I don't have to manually add them.
+..* As a user I want to place my contacts into pre-established buckets based on how frequently I want to contact them.
+..* As a user I want to see which of my contacts are overdue.
 
 ## Not-Yet-Implemented
-..*As a user I want to be able to receive notifications via SMS.
-..*As a user I want to be able to override the typical bucket-level notification preferences for VIP in my list.
+..* As a user I want to be able to receive notifications via SMS.
+..* As a user I want to be able to override the typical bucket-level notification preferences for VIP in my list.
 
 ## Future implementations
-..*As a user I want to be able to receive notifications via my phone's built in/native notifications.
-..*As a user I want the app to automatically update the last contacted date when I make a phone call.
-..*As a user I want the app to automatically update the last contacted date when I send them an email.
-..*As a user I want the app to automatically update the last contacted date when I send them an SMS and/or iMessage.
-..*As a user I want to be able to add an outlook account.
-..*As a user I want the notifications to be color coded so that I can quickly action the red ones.
-..*As a user I want the latter pages to be better styled (i.e. not just white).
+..* As a user I want to be able to receive notifications via my phone's built in/native notifications.
+..* As a user I want the app to automatically update the last contacted date when I make a phone call.
+..* As a user I want the app to automatically update the last contacted date when I send them an email.
+..* As a user I want the app to automatically update the last contacted date when I send them an SMS and/or iMessage.
+..* As a user I want to be able to add an outlook account.
+..* As a user I want the notifications to be color coded so that I can quickly action the red ones.
+..* As a user I want the latter pages to be better styled (i.e. not just white).
