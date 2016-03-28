@@ -36,6 +36,9 @@ The user walks through three simple set up steps that consist of connecting thei
 * As a user I want the app to be able to add "labels" to a contact so I know what is important to them (e.g. marketing, coding, biotech)
 * As a user I want the app to search my news feed (or a generic news feed if I don't have one) and suggest applicable articles to send a given contact.
 
+## Current Version:
+1.3.25
+
 ## Versioning Guide:
 1.1.1 -> 1.1.2: patch / bugfix
 
