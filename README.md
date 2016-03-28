@@ -38,5 +38,7 @@ The user walks through three simple set up steps that consist of connecting thei
 
 ## Versioning Guide:
 1.1.1 -> 1.1.2: patch / bugfix
+
 1.1.1 -> 1.2.0: minor update / feature addition
+
 1.1.1 -> 2.0.0: major change / breaking changes introduced
