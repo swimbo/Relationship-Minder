@@ -29,3 +29,9 @@ The user walks through three simple set up steps that consist of connecting thei
 * As a user I want to be able to add an outlook account.
 * As a user I want the notifications to be color coded so that I can quickly action the red ones.
 * As a user I want the latter pages to be better styled (i.e. not just white).
+* As the owner I want the user to be limited to 10 users before they're prompted to buy or share.
+* As the owner I want the user to be able to bucket 1 more contact for every 1 person they share it with
+* As the user I want my contacts to be shown on the buckets page based on the frequency of how often I have contacted them historically
+* As a user I want to set up templates so I can quickly send them a message without a typing on my phone.
+* As a user I want the app to be able to add "labels" to a contact so I know what is important to them (e.g. marketing, coding, biotech)
+* As a user I want the app to search my news feed (or a generic news feed if I don't have one) and suggest applicable articles to send a given contact.
