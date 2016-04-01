@@ -1,0 +1,24 @@
+{
+  "name": "relationship_minder",
+  "version": "1.0.0",
+  "description": "app to keep your relationships warm",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/swimbo/Relationship-Minder.git"
+  },
+  "keywords": [
+    "relationships",
+    "crm",
+    "reminders"
+  ],
+  "author": "bo",
+  "license": "SEE LICENSE IN <LICENSE.TXT>",
+  "bugs": {
+    "url": "https://github.com/swimbo/Relationship-Minder/issues"
+  },
+  "homepage": "https://github.com/swimbo/Relationship-Minder#readme"
+}
