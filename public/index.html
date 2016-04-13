@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html lang="en" ng-app="RelationshipMinder">
+<head>
+  <meta charset="utf-8">
+
+  <title>Relationship Minder</title>
+  <meta name="description" content="Relationship Minder">
+  <meta name="Bo Bergstrom" content="Angular App">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="main.css?v=1.0">
+  <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap-responsive.css">
+
+  <!-- Load up JS including Angular -->
+  <script src="third-party/Angular/angular.js" charset="utf-8"></script>
+  <script type="text/javascript" src="third-party/Angular/angular-animate.js"></script>
+  <script type="text/javascript" src="third-party/Angular/angular-ui-router.min.js"></script>
+
+  <!-- jQuery link -->
+  <script src="third-party/Angular/jquery.js"></script>
+  <!-- bootstrap js link -->
+  <script type="text/javascript" src="third-party/bootstrap/js/bootstrap.js">  </script>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="third-party/date.js"></script>
+  <script type="text/javascript" src="../app.js"></script>
+</head>
+
+<body ng-controller="RelationshipMinderController as vmRMCtrl" id="body-bootstrap-override">
+    <!-- ================================================================== -->
+    <!-- Navigation bar -->
+    <!-- ================================================================== -->
+  <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="navbar-inner" id="navbar-inner">
+      <div class="">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" id="navbar-brand" href="#">Relationship Minder</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a ui-sref="getting-started">Getting Started</a></li>
+            <li><a ui-sref="activity-feed">Notification Feed</a></li>
+
+          </ul>
+          <!-- <form class="navbar-form pull-right">
+            <input class="span2" type="text" placeholder="Email">
+            <input class="span2" type="password" placeholder="Password">
+            <button type="submit" class="btn">Sign in</button>
+          </form> -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- ================================================================== -->
+    <!-- Interactive web application begins here via angular ui router injection-->
+    <!-- ================================================================== -->
+    <div ui-view>
+
+    </div>
+
+
+    <!-- ================================================================== -->
+    <!-- Footer -->
+    <!-- ================================================================== -->
+
+    <footer class="footer-inverse navbar-fixed-bottom" id="footer-bootstrap-override">
+      <p>&copy; Relationship Minder 2015</p>
+    </footer>
+
+  </div>
+
+  <!-- javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
