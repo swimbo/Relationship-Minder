@@ -3,17 +3,17 @@ var db = require('../models/relationship-minder-model')
 module.exports = {
   rmController: {
     getAll: function(req, res) {
-      db.rmModel.find({}, function(err, restaurants) {
+      db.rmModel.find({}, function(err, rmContact) {
         if (err) {
           res.json(err)
         } else {
-          res.json(restaurants)
+          res.json(rmContact)
         }
       })
     },
     getSingle: function(req, res) {
       var id = req.params.id
-        // var restaurant = restaurants.filter(function(r) {
+        // var rmContact = rmContact.filter(function(r) {
         //   return r._id == id
         // })
       db.rmModel.findOne({
@@ -22,7 +22,7 @@ module.exports = {
         if (err) {
           res.json(err)
         } else {
-          console.log("Getting a single Restaurant");
+          console.log("Getting a single rmContact");
           res.json(rest)
         }
       })
@@ -52,20 +52,20 @@ module.exports = {
       })
     },
     create: function(req, res) {
-      console.log('3 - serverSide: running inside the restaurants_controller.js file', req)
-      var restaurant = new db.rmModel(req.body)
-      restaurant.save(function(err, rest) {
+      console.log('3 - serverSide: running inside the relationship-minder-controller.js file', req)
+      var rmContact = new db.rmModel(req.body)
+      rmContact.save(function(err, rest) {
         if (err) res.json(err)
-        console.log("4 - serverSide: running inside the restaurants_controller.js file --- Restaurant Created!!!", rest)
+        console.log("4 - serverSide: running inside the relationship-minder-controller.js file --- rmContact Created!!!", rest)
         res.json(rest)
       })
     },
     destroy: function(req, res) {
-      console.log('3 - serverSide: running inside the restaurants_controller.js file')
+      console.log('3 - serverSide: running inside the relationship-minder-controller.js file')
       var id = req.params.id
       db.rmModel.remove({_id: id}, function(err) {
         if (err) res.json(err)
-        console.log("4 - serverSide: running inside the restaurants_controller.js file --- Restaurant Deleted!!!")
+        console.log("4 - serverSide: running inside the relationship-minder-controller.js file --- rmContact Deleted!!!")
         res.json({
           message: "Deleted User!"
         })

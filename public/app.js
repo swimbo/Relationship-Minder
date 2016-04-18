@@ -3,7 +3,8 @@
   //======================================================//
   // Declare the module
   //======================================================//
-  angular.module('RelationshipMinder', ['ui.router'])
+  angular.module('RelationshipMinder', ['myControllers','ui.router','myFactory'])
+
 
   // =======================================================//
   // Declare our controller for the webapp flow
@@ -11,50 +12,45 @@
   angular.module('RelationshipMinder')
     .controller('RelationshipMinderController', RelationshipMinderController)
 
+    RelationshipMinderController.$inject = ['$http']
 
-  function RelationshipMinderController() {
+  function RelationshipMinderController($http) {
     var vmRMCtrl = this
     //placing bindable members at the top for easier readability
     vmRMCtrl.contactItem = contactItem;
 
 
+// =======================================================//
+//   Array Constructor and manipulation in this section
+// =======================================================//
+
     // array constructor to create new contact lists of contact objects
-    function contactArray() {
-      vmRMCtrl.contactArray = contactArray;
-    }
+    // function contactArray() {
+    //   vmRMCtrl.contactArray = contactArray;
+    // }
 
     //function to create the empty array that google contact objects will reside in
-    vmRMCtrl.googList = new contactArray([])
-    console.log(vmRMCtrl);
+    // vmRMCtrl.googList = new contactArray([])
+    // console.log(vmRMCtrl);
 
     //object constructor to create new contact objects based on API connections and/or front-end clicks/actions
-    function contactItem(firstName, lastName, email, phone, lastContact, bucket, overdue, daysSince) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
-      this.phone = phone;
-      this.lastContact = lastContact;
-      this.bucket = bucket;
-      this.overdue = overdue;
-      this.daysSince = daysSince;
-    }
+    // function contactItem(firstName, lastName, email, phone, lastContact, bucket, overdue, daysSince) {
+    //   this.firstName = firstName;
+    //   this.lastName = lastName;
+    //   this.email = email;
+    //   this.phone = phone;
+    //   this.lastContact = lastContact;
+    //   this.bucket = bucket;
+    //   this.overdue = overdue;
+    //   this.daysSince = daysSince;
+    // }
 
 
     // =======================================================//
     // Contacts Page starts here
     // =======================================================//
-    //fake contacts for testing. To be replaced by Google API data
-    var contact1 = new contactItem('Poor Old', 'Grandma', 'test1@gmail.com', '555-555-5555', 1332302400000)
-    var contact2 = new contactItem('Raider', 'Hater', 'test2@gmail.com', '555-555-5555', 1368799200000)
-    var contact3 = new contactItem('John', 'Smellway', 'test3@gmail.com', '555-555-5555', 1455509900000)
-    var contact4 = new contactItem('Joe', 'Namath', 'test4@gmail.com', '555-555-5555', 1438999200000)
-    var contact5 = new contactItem('Amos', 'Lee', 'test5@gmail.com', '555-555-5555', 1457899200000)
-    var contact6 = new contactItem('Coding', 'is Hard', 'test6@gmail.com', '555-555-5555', 1437999200000)
-    var contact7 = new contactItem('Best', 'Friend', 'test7@gmail.com', '555-555-5555', 1457999200000)
-    //fake array for testing.
-    vmRMCtrl.googList = [contact1, contact2, contact3, contact4, contact5, contact6, contact7]
-    console.log(vmRMCtrl.googList[0].firstName);
-    console.log(vmRMCtrl.googList);
+
+
     // For todays date (via the datejs library);
     var dateToday = Date.today()
     var dateMilliseconds = dateToday.getTime()
@@ -65,8 +61,6 @@
         var millisecondsOverdue = dateMilliseconds - vmRMCtrl.googList[i].lastContact
         var daysSince = (millisecondsOverdue / 86400000)
         vmRMCtrl.googList[i].daysSince = Math.round(daysSince)
-
-// ***** I need to add something in here (maybe?) so that WHEN there are no more contacts they are prompted to click the button.
 
       }
 
@@ -166,50 +160,95 @@
   //Configure our routes
   //======================================================//
 angular.module('RelationshipMinder')
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(routerConfig)
+    .directive('repeatDone',repeatDone)
+
+
+routerConfig.$inject = ['$stateProvider', '$urlRouterProvider']
+    // .config(function($stateProvider, $urlRouterProvider) {
 
       // catch all route
       // send users to the landing page
 
-      $stateProvider
-      // Route to show the landing page
-        .state('landing', {
-          url: '/landing',
-          templateUrl: 'partials/landing.html'
-        })
-        // Route to show the first page
-        .state('getting-started', {
-          url: '/getting-started',
-          templateUrl: 'partials/getting-started.html'
-        })
-        // nested states
-        // each of these sections will have their own view
-        // url will be nested (/getting-started/connect)
-        .state('connect', {
-          url: '/connect',
-          templateUrl: 'partials/connect.html'
-        })
+      // $stateProvider
+      // // Route to show the landing page
+      //   .state('landing', {
+      //     url: 'landing',
+      //     templateUrl: 'landing.html'
+      //   })
+      //   // Route to show the first page
+      //   .state('getting-started', {
+      //     url: '/getting-started',
+      //     templateUrl: 'getting-started.html'
+      //   })
+      //   // nested states
+      //   // each of these sections will have their own view
+      //   // url will be nested (/getting-started/connect)
+      //   .state('connect', {
+      //     url: '/connect',
+      //     templateUrl: 'partials/connect.html'
+      //   })
+      //
+      // // url will be /getting-started/buckets
+      // .state('buckets', {
+      //   url: '/buckets',
+      //   templateUrl: 'partials/buckets.html'
+      // })
+      //
+      // // url will be /getting-started/notifications
+      // .state('notifications', {
+      //   url: '/notifications',
+      //   templateUrl: 'partials/notifications.html'
+      // })
+      //
+      // // url will be /activity-feed.html
+      // .state('activity-feed', {
+      //   url: '/activity-feed',
+      //   templateUrl: 'partials/activity-feed.html'
+      // });
+      //
+      // $urlRouterProvider.otherwise('partials/landing');
+      // })
 
-      // url will be /getting-started/buckets
+
+
+  function routerConfig ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/landing',
+        templateUrl: 'partials/landing.html',
+        // controller: 'clientRMController as rmCtrl'
+      })
+      .state('getting-started', {
+        url: '/getting-started',
+        templateUrl: 'partials/getting-started.html',
+        // controller: 'clientRMController as rmCtrl'
+      })
+      .state('connect', {
+        url: '/connect',
+        templateUrl: 'partials/connect.html',
+        // controller: 'clientRMController as rmCtrl'
+      })
       .state('buckets', {
         url: '/buckets',
-        templateUrl: 'partials/buckets.html'
+        templateUrl: 'partials/buckets.html',
+        // controller: 'clientRMController as rmCtrl'
       })
-
-      // url will be /getting-started/notifications
-      .state('notifications', {
-        url: '/notifications',
-        templateUrl: 'partials/notifications.html'
-      })
-
-      // url will be /activity-feed.html
       .state('activity-feed', {
         url: '/activity-feed',
-        templateUrl: 'partials/activity-feed.html'
-      });
+        templateUrl: 'partials/activity-feed.html',
+        // controller: 'clientRMController as rmCtrl'
+      })
+      $urlRouterProvider.otherwise('/landing')
+  }
 
-      $urlRouterProvider.otherwise('partials/landing');
-    })
+  function repeatDone (){
+    return function(scope, element, attrs) {
+        if (scope.$last) { // all are rendered
+            scope.$eval(attrs.repeatDone);
+        }
+    }
+  }
 
 
 
