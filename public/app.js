@@ -5,6 +5,79 @@
   //======================================================//
   angular.module('RelationshipMinder', ['myControllers','ui.router','myFactory'])
 
+  // =======================================================//
+  //   Google Auth Controller
+  // =======================================================//
+  angular.module('RelationshipMinder')
+      .controller('GoogleAuthController', GoogleAuthController)
+
+  GoogleAuthController.$inject = ['$http', 'rmFactory']
+
+
+  function GoogleAuthController($http, rmFactory){
+    console.log('0 - GoogleAuthController start');
+    var rmAuth = this
+    var clientId = '199009851105-3heb28ouj2tkpa9ao0gbjoda36e77qbb.apps.googleusercontent.com';
+    var apiKey = 'Your API Code';
+    var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+
+
+  rmAuth.googleContactsButton = function(){
+    console.log('1 - googleContactsButton start');
+      gapi.client.setApiKey(apiKey);
+      window.setTimeout(rmAuth.authorize);
+    console.log('2 - googleContactsButton end');
+    };
+
+  rmAuth.authorize = function() {
+    console.log('3 - authorize start');
+          gapi.auth.authorize({
+          client_id: clientId,
+          scope: scopes,
+          immediate: false
+      }, rmAuth.handleAuthorization);
+    console.log('4 - authorize end');
+    }
+
+  rmAuth.handleAuthorization = function(authorizationResult) {
+    console.log('5 - handleAuthorization start');
+    var rawGoogleContacts = []
+      if (authorizationResult && !authorizationResult.error) {
+        $http({
+          method: 'GET',
+          url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=2&v=3.0"
+        }).then(success_callback, error_callback)
+
+        function success_callback(response) {
+                // See what the raw response looks linked
+                console.log(response);
+                //process the response here to get what we need
+                console.log(response.data.feed.entry[0].gcontact$website[0].href);
+                console.log(response.data.feed.entry[0].gd$name.gd$fullName.$t);
+                console.log(response.data.feed.entry[0].gd$name.gd$fullName.$t);
+            for (var i = 0; i < response.data.feed.entry.length; i++) {
+            rawGoogleContacts.push(response.data.feed.entry[i])
+            }
+            console.log(rawGoogleContacts[0]);
+            var cleanContactArray = []
+            for (var i = 0; i < rawGoogleContacts.length; i++) {
+              rawGoogleContacts[i]
+            }
+
+        }
+
+        function error_callback(){
+        console.log('error on $http call in rmAuth');
+        }
+      }
+      console.log('6 - handleAuthorization end');
+    }
+    //
+    // module.exports = {}
+    //   rmAuth: {}
+
+  }
+
 
   // =======================================================//
   // Declare our controller for the webapp flow
@@ -12,41 +85,40 @@
   angular.module('RelationshipMinder')
     .controller('RelationshipMinderController', RelationshipMinderController)
 
-    RelationshipMinderController.$inject = ['$http']
+    RelationshipMinderController.$inject = []
 
-  function RelationshipMinderController($http) {
+  function RelationshipMinderController() {
     var vmRMCtrl = this
     //placing bindable members at the top for easier readability
-
 
     // vmRMCtrl.contactItem = contactItem;
 
 
-// // =======================================================//
-// //   Array Constructor and manipulation in this section
-// // =======================================================//
-//
-//     // array constructor to create new contact lists of contact objects
-//     function contactArray() {
-//       vmRMCtrl.contactArray = contactArray;
-//     }
-//
-//     //function to create the empty array that google contact objects will reside in
-//     vmRMCtrl.googList = new contactArray([])
-//     console.log(vmRMCtrl);
-//
-//     //object constructor to create new contact objects based on API connections and/or front-end clicks/actions
-//     // function contactItem(firstName, lastName, email, phone, lastContact, bucket, overdue, daysSince) {
-//     //   this.firstName = firstName;
-//     //   this.lastName = lastName;
-//     //   this.email = email;
-//     //   this.phone = phone;
-//     //   this.lastContact = lastContact;
-//     //   this.bucket = bucket;
-//     //   this.overdue = overdue;
-//     //   this.daysSince = daysSince;
-//     // }
-//
+// =======================================================//
+//   Array Constructor and manipulation in this section
+// =======================================================//
+    // console.log(rawGoogleContacts);
+    // array constructor to create new contact lists of contact objects
+    function cleanContactArray() {
+      vmRMCtrl.cleanContactArray = cleanContactArray;
+    }
+
+    //function to create the empty array that google contact objects will reside in
+    vmRMCtrl.googList = new cleanContactArray([])
+    console.log(vmRMCtrl);
+
+    // object constructor to create new contact objects based on API return
+    function contactItem(firstName, lastName, email, phone, lastContact, bucket, overdue, daysSince) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.phone = phone;
+      this.lastContact = lastContact;
+      this.bucket = bucket;
+      this.overdue = overdue;
+      this.daysSince = daysSince;
+    }
+
 //
 //     // =======================================================//
 //     // Contacts Page starts here
@@ -155,64 +227,6 @@
   //   }
   //
 
-
-  }
-
-  // =======================================================//
-  //   Google Auth Controller
-  // =======================================================//
-  angular.module('RelationshipMinder')
-      .controller('GoogleAuthController', GoogleAuthController)
-
-  function GoogleAuthController(){
-    var rmAuth = this
-    var clientId = '199009851105-3heb28ouj2tkpa9ao0gbjoda36e77qbb.apps.googleusercontent.com';
-    var apiKey = 'Your API Code';
-    var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
-
-  rmAuth.googleContactsButton = function(){
-    console.log('1 - googleContactsButton start');
-      gapi.client.setApiKey(apiKey);
-      window.setTimeout(rmAuth.authorize);
-    console.log('2 - googleContactsButton end');
-    };
-
-  rmAuth.authorize = function() {
-    console.log('3 - authorize start');
-          gapi.auth.authorize({
-          client_id: clientId,
-          scope: scopes,
-          immediate: false
-      }, rmAuth.handleAuthorization);
-    console.log('4 - authorize end');
-    }
-
-  rmAuth.handleAuthorization = function(authorizationResult) {
-    console.log('5 - handleAuthorization start');
-    var googContacts = []
-      if (authorizationResult && !authorizationResult.error) {
-        $http({
-          method: "GET",
-          url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=10&v=3.0",
-        }).success(function(response) {
-            //process the response here
-            console.log(response);
-            console.log(response.feed.entry[0].gd$name.gd$fullName.$t);
-            for (var i = 0; i < response.feed.entry.length; i++) {
-            googContacts.push(response.feed.entry[i])
-            }
-            console.log(googContacts);
-        }).error(function(){
-          console.log('error on $http call in rmAuth');
-        })
-      }
-      console.log('6 - handleAuthorization end');
-    }
-
-
-    //
-    // module.exports = {}
-    //   rmAuth: {}
 
   }
 

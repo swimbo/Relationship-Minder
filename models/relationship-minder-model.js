@@ -11,7 +11,8 @@ var mongoose       = require('mongoose'),      // <-- assigning mongoose to the 
       daysSince    : {type: Number, min: 0},  // <-- setting a data type for the days since key, and setting it to validate that a number greater 0
 
       createdAt    : {type: Date, Default: Date.now}, // setting the createdAt key to automatically assign the specific day date to createdAt
-      nextContact  :  Date
+      nextContact  :  Date,
+      facebook     :  String
 
   })
 
