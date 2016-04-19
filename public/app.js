@@ -17,108 +17,111 @@
   function RelationshipMinderController($http) {
     var vmRMCtrl = this
     //placing bindable members at the top for easier readability
-    vmRMCtrl.contactItem = contactItem;
 
 
-// =======================================================//
-//   Array Constructor and manipulation in this section
-// =======================================================//
-
-    // array constructor to create new contact lists of contact objects
-    // function contactArray() {
-    //   vmRMCtrl.contactArray = contactArray;
-    // }
-
-    //function to create the empty array that google contact objects will reside in
-    // vmRMCtrl.googList = new contactArray([])
-    // console.log(vmRMCtrl);
-
-    //object constructor to create new contact objects based on API connections and/or front-end clicks/actions
-    // function contactItem(firstName, lastName, email, phone, lastContact, bucket, overdue, daysSince) {
-    //   this.firstName = firstName;
-    //   this.lastName = lastName;
-    //   this.email = email;
-    //   this.phone = phone;
-    //   this.lastContact = lastContact;
-    //   this.bucket = bucket;
-    //   this.overdue = overdue;
-    //   this.daysSince = daysSince;
-    // }
+    // vmRMCtrl.contactItem = contactItem;
 
 
-    // =======================================================//
-    // Contacts Page starts here
-    // =======================================================//
-
-
-    // For todays date (via the datejs library);
-    var dateToday = Date.today()
-    var dateMilliseconds = dateToday.getTime()
-    console.log(dateMilliseconds);
-
-    function overdueAmt(){
-      for(var i = 0; i < vmRMCtrl.googList.length; i++){
-        var millisecondsOverdue = dateMilliseconds - vmRMCtrl.googList[i].lastContact
-        var daysSince = (millisecondsOverdue / 86400000)
-        vmRMCtrl.googList[i].daysSince = Math.round(daysSince)
-
-      }
-
-    }
-    // To simulate loading contacts, I should call this after click of "add contacts" and google auth. Putting here for now.
-    overdueAmt()
-
-
+// // =======================================================//
+// //   Array Constructor and manipulation in this section
+// // =======================================================//
 //
-
-    // =======================================================//
-    // Buckets Page starts here
-    // =======================================================//
-
-    vmRMCtrl.OnDeck = 0
-    // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
-
-    // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
-    vmRMCtrl.checkBtnStatus = function() {
-      if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-        return true
-      }
-      else {
-        return false
-      }
-    }
-
-    //bucketing function on click assign bucket value to appropriate key value pair AND call next one
-    function nextContact (){
-      vmRMCtrl.checkBtnStatus()
-      if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-        console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
-        // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
-        if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-          vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
-        }
-        else{
-          vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
-        }
-        if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-            vmRMCtrl.OnDeck++
-            nextContact()
-
-        }
-        // else{
-        //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
-        //   console.log(vmRMCtrl.lastMessage);
-        // }
-
-      }
-
-    }
-    //this function is going to add the bucket information to the contact objects
-    vmRMCtrl.contactBucket = function (bucketValue) {
-      vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
-      nextContact()
-    }
-    nextContact()
+//     // array constructor to create new contact lists of contact objects
+//     function contactArray() {
+//       vmRMCtrl.contactArray = contactArray;
+//     }
+//
+//     //function to create the empty array that google contact objects will reside in
+//     vmRMCtrl.googList = new contactArray([])
+//     console.log(vmRMCtrl);
+//
+//     //object constructor to create new contact objects based on API connections and/or front-end clicks/actions
+//     // function contactItem(firstName, lastName, email, phone, lastContact, bucket, overdue, daysSince) {
+//     //   this.firstName = firstName;
+//     //   this.lastName = lastName;
+//     //   this.email = email;
+//     //   this.phone = phone;
+//     //   this.lastContact = lastContact;
+//     //   this.bucket = bucket;
+//     //   this.overdue = overdue;
+//     //   this.daysSince = daysSince;
+//     // }
+//
+//
+//     // =======================================================//
+//     // Contacts Page starts here
+//     // =======================================================//
+//
+//
+//     // For todays date (via the datejs library);
+//     var dateToday = Date.today()
+//     var dateMilliseconds = dateToday.getTime()
+//     console.log(dateMilliseconds);
+//
+//     function overdueAmt(){
+//       for(var i = 0; i < vmRMCtrl.googList.length; i++){
+//         var millisecondsOverdue = dateMilliseconds - vmRMCtrl.googList[i].lastContact
+//         var daysSince = (millisecondsOverdue / 86400000)
+//         vmRMCtrl.googList[i].daysSince = Math.round(daysSince)
+//
+//       }
+//
+//     }
+//     // To simulate loading contacts, I should call this after click of "add contacts" and google auth. Putting here for now.
+// //  NOT CALLING THIS YET:
+// //  overdueAmt()
+//
+//
+// //
+//
+//     // =======================================================//
+//     // Buckets Page starts here
+//     // =======================================================//
+//
+//     vmRMCtrl.OnDeck = 0
+//     // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
+//
+//     // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
+//     vmRMCtrl.checkBtnStatus = function() {
+//       if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+//         return true
+//       }
+//       else {
+//         return false
+//       }
+//     }
+//
+//     //bucketing function on click assign bucket value to appropriate key value pair AND call next one
+//     function nextContact (){
+//       vmRMCtrl.checkBtnStatus()
+//       if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
+//         console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
+//         // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
+//         if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
+//           vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
+//         }
+//         else{
+//           vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
+//         }
+//         if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+//             vmRMCtrl.OnDeck++
+//             nextContact()
+//
+//         }
+//         // else{
+//         //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
+//         //   console.log(vmRMCtrl.lastMessage);
+//         // }
+//
+//       }
+//
+//     }
+//     //this function is going to add the bucket information to the contact objects
+//     vmRMCtrl.contactBucket = function (bucketValue) {
+//       vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
+//       nextContact()
+//     }
+//     nextContact()
 
 
     // vmRMCtrl.checkBtnStatus()
@@ -155,6 +158,63 @@
 
   }
 
+  // =======================================================//
+  //   Google Auth Controller
+  // =======================================================//
+  angular.module('RelationshipMinder')
+      .controller('GoogleAuthController', GoogleAuthController)
+
+  function GoogleAuthController(){
+    var rmAuth = this
+    var clientId = '199009851105-3heb28ouj2tkpa9ao0gbjoda36e77qbb.apps.googleusercontent.com';
+    var apiKey = 'Your API Code';
+    var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+
+  rmAuth.googleContactsButton = function(){
+    console.log('1 - googleContactsButton start');
+      gapi.client.setApiKey(apiKey);
+      window.setTimeout(rmAuth.authorize);
+    console.log('2 - googleContactsButton end');
+    };
+
+  rmAuth.authorize = function() {
+    console.log('3 - authorize start');
+          gapi.auth.authorize({
+          client_id: clientId,
+          scope: scopes,
+          immediate: false
+      }, rmAuth.handleAuthorization);
+    console.log('4 - authorize end');
+    }
+
+  rmAuth.handleAuthorization = function(authorizationResult) {
+    console.log('5 - handleAuthorization start');
+    var googContacts = []
+      if (authorizationResult && !authorizationResult.error) {
+        $http({
+          method: "GET",
+          url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=10&v=3.0",
+        }).success(function(response) {
+            //process the response here
+            console.log(response);
+            console.log(response.feed.entry[0].gd$name.gd$fullName.$t);
+            for (var i = 0; i < response.feed.entry.length; i++) {
+            googContacts.push(response.feed.entry[i])
+            }
+            console.log(googContacts);
+        }).error(function(){
+          console.log('error on $http call in rmAuth');
+        })
+      }
+      console.log('6 - handleAuthorization end');
+    }
+
+
+    //
+    // module.exports = {}
+    //   rmAuth: {}
+
+  }
 
   //======================================================//
   //Configure our routes
