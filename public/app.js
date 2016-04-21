@@ -20,7 +20,7 @@
         var clientId = '199009851105-3heb28ouj2tkpa9ao0gbjoda36e77qbb.apps.googleusercontent.com';
         var apiKey = 'Your API Code';
         var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
-
+        var scopes2 = 'https://www.googleapis.com/auth/userinfo.email';
 
         rmAuth.googleContactsButton = function() {
             console.log('1 - googleContactsButton start');
@@ -41,7 +41,6 @@
 
         rmAuth.handleAuthorization = function(authorizationResult) {
                 console.log('5 - handleAuthorization start');
-                var rawGoogleContacts = []
                 if (authorizationResult && !authorizationResult.error) {
                     $http({
                         method: 'GET',
@@ -128,6 +127,45 @@
                             // Our cleanContactArray should now be filled with just the info we want. logging to make sure.
                             console.log(cleanContactArray)
 
+
+                            // //==========================================================
+                            // // Making another call here to grab the user's email address
+                            // //==========================================================
+                            // function authorize2() {
+                            //     console.log('11 - authorize2 start');
+                            //       var scopes2 = 'https://www.googleapis.com/auth/userinfo.email';
+                            //     gapi.auth.authorize({
+                            //         client_id: clientId,
+                            //         scope: scopes2,
+                            //         immediate: false
+                            //     }, rmAuth.handleAuthorization2);
+                            //     console.log('12 - authorize2 end');
+                            // }
+                            // authorize2()
+                            //
+                            // rmAuth.handleAuthorization2 = function(authorizationResult) {
+                            //         console.log('13 - handleAuthorization2 start');
+                            //         if (authorizationResult && !authorizationResult.error) {
+                            //           var request = gapi.client.plus.people.get({
+                            //               'userId' : 'me'
+                            //               });
+                            //
+                            //           request.execute(function(resp) {
+                            //           console.log('ID: ' + resp.id);
+                            //           console.log('Display Name: ' + resp.displayName);
+                            //           console.log('Image URL: ' + resp.image.url);
+                            //           console.log('Profile URL: ' + resp.url);
+                            //           });
+                            //         }
+                            //         console.log('16 - handleAuthorization2 end');
+                            //   }
+                            //   rmAuth.handleAuthorization2()
+
+
+                    //==========================================================
+                    // Pushing everything in the cleanContactArray to the DB
+                    //==========================================================
+
                             function pushCreatetoDB(cleanContactArray) {
                               for (var i = 0; i < rawdata.length; i++) {
                                 rmFactory.create(
@@ -139,13 +177,20 @@
                             pushCreatetoDB(cleanContactArray)
                         }
                         removeNullsandUndefined(rawdata)
+
+
+
+
+
+
+
                     }
 
                     function error_callback() {
                         console.log('error on $http call in rmAuth');
                     }
                 }
-                console.log('6 - handleAuthorization end');
+                console.log('6 - original handleAuthorization end');
             }
             //
             // module.exports = {}
@@ -221,70 +266,81 @@
         //
         // //
         //
-        //     // =======================================================//
-        //     // Buckets Page starts here
-        //     // =======================================================//
-        //
-        //     vmRMCtrl.OnDeck = 0
-        //     // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
-        //
-        //     // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
-        //     vmRMCtrl.checkBtnStatus = function() {
-        //       if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-        //         return true
-        //       }
-        //       else {
-        //         return false
-        //       }
-        //     }
-        //
-        //     //bucketing function on click assign bucket value to appropriate key value pair AND call next one
-        //     function nextContact (){
-        //       vmRMCtrl.checkBtnStatus()
-        //       if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-        //         console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
-        //         // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
-        //         if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-        //           vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
-        //         }
-        //         else{
-        //           vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
-        //         }
-        //         if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-        //             vmRMCtrl.OnDeck++
-        //             nextContact()
-        //
-        //         }
-        //         // else{
-        //         //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
-        //         //   console.log(vmRMCtrl.lastMessage);
-        //         // }
-        //
-        //       }
-        //
-        //     }
-        //     //this function is going to add the bucket information to the contact objects
-        //     vmRMCtrl.contactBucket = function (bucketValue) {
-        //       vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
-        //       nextContact()
-        //     }
-        //     nextContact()
+            // =======================================================//
+            // Buckets Page starts here
+            // =======================================================//
+
+            function whoNeedsBucketed(){
+              for (var i = 0; i < array.length; i++) {
+                 var dbContacts = rmFactory.getAll()
+                 dbContacts[i]
+              }
+              if(rmFactory.getSingle.bucket){
+                    console.log('bucket exists');
+              }
+              else{
+
+              }
+            }
+            // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
+
+            // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
+            vmRMCtrl.checkBtnStatus = function() {
+              if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+                return true
+              }
+              else {
+                return false
+              }
+            }
+
+            //bucketing function on click assign bucket value to appropriate key value pair AND call next one
+            function nextContact (){
+              vmRMCtrl.checkBtnStatus()
+              if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
+                console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
+                // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
+                if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
+                  vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
+                }
+                else{
+                  vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
+                }
+                if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+                    vmRMCtrl.OnDeck++
+                    nextContact()
+
+                }
+                // else{
+                //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
+                //   console.log(vmRMCtrl.lastMessage);
+                // }
+
+              }
+
+            }
+            //this function is going to add the bucket information to the contact objects
+            vmRMCtrl.contactBucket = function (bucketValue) {
+              vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
+              nextContact()
+            }
+            nextContact()
 
 
-        // vmRMCtrl.checkBtnStatus()
+        vmRMCtrl.checkBtnStatus()
 
-        //this function is going to connect to the API and add the contacts to the contactList array
-        // function contactBucket(){
-        //
-        //   console.log(contactList.name);
-        // }
+        this function is going to connect to the API and add the contacts to the contactList array
+        function contactBucket(){
 
-        // //this function is going to set the preferred notification type by... BUCKET?
-        // function notificationType() {
-        //
-        //   console.log(contactList.name);
-        // }
-        //
+          console.log(contactList.name);
+        }
+
+        //this function is going to set the preferred notification type by... BUCKET?
+        function notificationType() {
+
+          console.log(contactList.name);
+        }
+
         // =======================================================//
         // Notification Page logic starts here
         // =======================================================//
