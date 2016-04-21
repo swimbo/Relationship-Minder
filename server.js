@@ -23,7 +23,7 @@ app.use(cors()) // <-- IDK for sure?
 app.use('/api/v1', apiRoutes)
 app.use(express.static(path.join(__dirname, './public')))
 
-// http://localhost:3000/api/v1/cars
+
 app.listen(port, function (err) {
   if(err)  console.log(err) // if there is in error connecting to the port, than it will log the error
   console.log('Server running on port: ' + port) // if there is no error, we will get this response
