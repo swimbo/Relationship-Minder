@@ -8,11 +8,11 @@ var mongoose       = require('mongoose'),      // <-- assigning mongoose to the 
       phoneNumber1  :  String,  // <-- setting the phone number type for the email address key to string
       phoneNumber2  :  String,  // <-- setting the phone number type for the email address key to string
       lastContact  : {type: Number, min: 0}, // <-- setting the data type for the last contact key to number with a minimum number of 0
-      bucket       :  Number, //<-- setting the data type for the bucket key to number.
+      bucket       :  {type: Number, default: 0 }, //<-- setting the data type for the bucket key to number.
       overdue      :  Boolean,                          // <-- setting the data type for the address key to string
       daysSince    : {type: Number, min: 0},  // <-- setting a data type for the days since key, and setting it to validate that a number greater 0
 
-      createdAt    : {type: Date, Default: Date.now}, // setting the createdAt key to automatically assign the specific day date to createdAt
+      createdAt    : {type: Date, default: Date.now}, // setting the createdAt key to automatically assign the specific day date to createdAt
       nextContact  :  Date,
       socialMedia    :  String,
       postalAddress:  String

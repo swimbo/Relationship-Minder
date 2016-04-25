@@ -44,7 +44,7 @@
                 if (authorizationResult && !authorizationResult.error) {
                     $http({
                         method: 'GET',
-                        url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=3&v=3.0"
+                        url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=30&v=3.0"
                     }).then(success_callback, error_callback)
 
                     function success_callback(response) {
@@ -162,27 +162,21 @@
                             //   rmAuth.handleAuthorization2()
 
 
-                    //==========================================================
-                    // Pushing everything in the cleanContactArray to the DB
-                    //==========================================================
+      //==========================================================
+      // Pushing everything in the cleanContactArray to the DB
+      //==========================================================
 
                             function pushCreatetoDB(cleanContactArray) {
                               for (var i = 0; i < rawdata.length; i++) {
                                 rmFactory.create(
                                   cleanContactArray[i]
                                 )
-                                // .then()
+
                               }
                             }
                             pushCreatetoDB(cleanContactArray)
                         }
                         removeNullsandUndefined(rawdata)
-
-
-
-
-
-
 
                     }
 
@@ -205,11 +199,16 @@
     angular.module('RelationshipMinder')
         .controller('RelationshipMinderController', RelationshipMinderController)
 
-    RelationshipMinderController.$inject = []
+    RelationshipMinderController.$inject = ['rmFactory']
 
-    function RelationshipMinderController() {
+    function RelationshipMinderController(rmFactory) {
         var vmRMCtrl = this
             //placing bindable members at the top for easier readability
+
+
+
+
+
 
         // vmRMCtrl.contactItem = contactItem;
 
@@ -266,80 +265,65 @@
         //
         // //
         //
-            // =======================================================//
-            // Buckets Page starts here
-            // =======================================================//
 
-            function whoNeedsBucketed(){
-              for (var i = 0; i < array.length; i++) {
-                 var dbContacts = rmFactory.getAll()
-                 dbContacts[i]
-              }
-              if(rmFactory.getSingle.bucket){
-                    console.log('bucket exists');
-              }
-              else{
-
-              }
-            }
             // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
 
             // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
-            vmRMCtrl.checkBtnStatus = function() {
-              if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-                return true
-              }
-              else {
-                return false
-              }
-            }
+            // vmRMCtrl.checkBtnStatus = function() {
+            //   if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+            //     return true
+            //   }
+            //   else {
+            //     return false
+            //   }
+            // }
 
             //bucketing function on click assign bucket value to appropriate key value pair AND call next one
-            function nextContact (){
-              vmRMCtrl.checkBtnStatus()
-              if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-                console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
-                // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
-                if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-                  vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
-                }
-                else{
-                  vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
-                }
-                if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-                    vmRMCtrl.OnDeck++
-                    nextContact()
-
-                }
-                // else{
-                //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
-                //   console.log(vmRMCtrl.lastMessage);
-                // }
-
-              }
-
-            }
+            // function nextContact (){
+            //   vmRMCtrl.checkBtnStatus()
+            //   if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
+            //     console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
+            //     // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
+            //     if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
+            //       vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
+            //     }
+            //     else{
+            //       vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
+            //     }
+            //     if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
+            //         vmRMCtrl.OnDeck++
+            //         nextContact()
+            //
+            //     }
+            //     // else{
+            //     //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
+            //     //   console.log(vmRMCtrl.lastMessage);
+            //     // }
+            //
+            //   }
+            //
+            // }
             //this function is going to add the bucket information to the contact objects
-            vmRMCtrl.contactBucket = function (bucketValue) {
-              vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
-              nextContact()
-            }
-            nextContact()
+        //     vmRMCtrl.contactBucket = function (bucketValue) {
+        //       vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
+        //       nextContact()
+        //     }
+        //     nextContact()
+        //
+        //
+        // vmRMCtrl.checkBtnStatus()
 
+        // //this function is going to connect to the API and add the contacts to the contactList array
+        // function contactBucket(){
+        //
+        //   console.log(contactList.name);
+        // }
 
-        vmRMCtrl.checkBtnStatus()
-
-        this function is going to connect to the API and add the contacts to the contactList array
-        function contactBucket(){
-
-          console.log(contactList.name);
-        }
-
-        //this function is going to set the preferred notification type by... BUCKET?
-        function notificationType() {
-
-          console.log(contactList.name);
-        }
+        // //this function is going to set the preferred notification type by... BUCKET?
+        // function notificationType() {
+        //
+        //   console.log(contactList.name);
+        // }
 
         // =======================================================//
         // Notification Page logic starts here
@@ -360,6 +344,104 @@
 
 
     }
+
+    //======================================================//
+    //BUCKETS CONTROLLER STARTS HERE
+    //======================================================//
+
+
+    angular.module('RelationshipMinder')
+        .controller('BucketsController', BucketsController)
+
+    BucketsController.$inject = ['rmFactory']
+
+    function BucketsController(rmFactory) {
+        var BucketsCtrl = this
+
+        BucketsCtrl.i = 0
+        BucketsCtrl.end = false
+
+// Function to get all the contacts from the DB that DON'T have a bucket set.
+      rmFactory.getNoBuckets()
+        .then(function(result){
+          console.log('get no buckets is running in app.js');
+          BucketsCtrl.noBuckets = result.data
+          console.log(BucketsCtrl.noBuckets)
+        })
+
+        BucketsCtrl.contactBucket = function (bucketValue) {
+          console.log(BucketsCtrl.i);
+          console.log(bucketValue);
+          rmFactory.update(BucketsCtrl.noBuckets[BucketsCtrl.i]._id,{'bucket': bucketValue})
+          .then( function(response){
+            console.log(response);
+            if(BucketsCtrl.i < BucketsCtrl.noBuckets.length){
+              BucketsCtrl.i++
+            }
+            else{
+              BucketsCtrl.end = true
+            }
+          }
+
+          )
+        }
+        // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
+
+        // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
+
+
+
+
+        // bucketing function on click assign bucket value to appropriate key value pair AND call next one
+        // function nextContact (){
+        //   BucketsCtrl.checkBtnStatus()
+        //   if (BucketsCtrl.noBuckets[BucketsCtrl.OnDeck].bucket){
+        //     console.log(BucketsCtrl.noBuckets[BucketsCtrl.OnDeck])
+        //     // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
+        //     if(BucketsCtrl.googList[BucketsCtrl.OnDeck].daysSince <= BucketsCtrl.googList[BucketsCtrl.OnDeck].bucket){
+        //       BucketsCtrl.googList[BucketsCtrl.OnDeck].overdue = false
+        //     }
+        //     else{
+        //       BucketsCtrl.googList[BucketsCtrl.OnDeck].overdue = true
+        //     }
+        //     if(BucketsCtrl.OnDeck < BucketsCtrl.googList.length){
+        //         BucketsCtrl.OnDeck++
+        //         nextContact()
+        //
+        //     }
+        //     else{
+        //       BucketsCtrl.lastMessage = 'All done! Click the button to see notifications.'
+        //       console.log(BucketsCtrl.lastMessage);
+        //     }
+        //
+        //   }
+        //
+        // }
+        // this function is going to add the bucket information to the contact objects
+
+
+
+// TURNING OFF AUTO-INVOKE HERE
+            // BucketsCtrl.checkBtnStatus()
+
+            //this function is going to connect to the API and add the contacts to the contactList array
+            // function contactBucket(){
+            //
+            //   console.log(contactList.name);
+            // }
+
+            //this function is going to set the preferred notification type by... BUCKET?
+            // function notificationType() {
+            //
+            //   console.log(contactList.name);
+            // }
+            //
+
+}
+
+
+
+
 
     //======================================================//
     //Configure our routes
@@ -432,12 +514,12 @@
             .state('connect', {
                 url: '/connect',
                 templateUrl: 'partials/connect.html',
-                // controller: 'clientRMController as rmCtrl'
+                controller: 'GoogleAuthController as rmAuth'
             })
             .state('buckets', {
                 url: '/buckets',
                 templateUrl: 'partials/buckets.html',
-                // controller: 'clientRMController as rmCtrl'
+                // controller: 'BucketsController as BucketsCtrl'
             })
             .state('activity-feed', {
                 url: '/activity-feed',

@@ -25,22 +25,36 @@ module.exports = {
         }
       })
     },
+    noBuckets: function(req, res) {
+      // var id = req.params.id
+
+      db.rmModel.find({
+        bucket: 0
+      }, function(err, rmContact) {
+        if (err) {
+          res.json(err)
+        } else {
+          console.log("Getting a contact without a bucket");
+          res.json(rmContact)
+        }
+      })
+    },
     update: function(req, res) {
-      console.log('this is req', rmContact)
+      console.log('this is request for update')
       var id = req.params.id
       db.rmModel.findOne({_id: id}, function(err, contact) {
         console.log("this is rm", contact)
-        if (rmContact.firstName) {
-          contact.firstName = rmContact.firstName
+        if (req.body.firstName) {
+          contact.firstName = req.body.firstName
         }
-        if (rmContact.emailAddress) {
-          contact.emailAddress = rmContact.emailAddress
+        if (req.body.emailAddress) {
+          contact.emailAddress = req.body.emailAddress
         }
-        if (rmContact.bucket) {
-          contact.bucket = rmContact.bucket
+        if (req.body.bucket) {
+          contact.bucket = req.body.bucket
         }
-        if (rmContact.daysSince) {
-          contact.daysSince = rmContact.daysSince
+        if (req.body.daysSince) {
+          contact.daysSince = req.body.daysSince
         }
         contact.save(function(err, r) {
           console.log(err)

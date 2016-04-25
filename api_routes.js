@@ -6,6 +6,9 @@ var
     .get(ctrl.rmController.getAll)
     .post(ctrl.rmController.create)
 
+  apiRouter.route('/relationship-minder/noBuckets')
+    .get(ctrl.rmController.noBuckets)
+
    apiRouter.route('/relationship-minder/:id')
   //http://localhost:3000/api/v1/relationship-minder/:valueHere
     .get(ctrl.rmController.getSingle)
