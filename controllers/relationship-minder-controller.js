@@ -41,7 +41,7 @@ module.exports = {
     overdueContacts: function(req, res) {
       // var id = req.params.id
       db.rmModel.find({
-        bucket: 0
+        overdue: true
       }, function(err, rmContact) {
         if (err) {
           res.json(err)
@@ -52,31 +52,50 @@ module.exports = {
       })
     },
     update: function(req, res) {
-      console.log('this is request for update')
       var id = req.params.id
-      db.rmModel.findOne({_id: id}, function(err, contact) {
-        console.log("this is rm", contact)
-        if (req.body.firstName) {
-          contact.firstName = req.body.firstName
-        }
-        if (req.body.emailAddress) {
-          contact.emailAddress = req.body.emailAddress
-        }
-        if (req.body.bucket) {
-          contact.bucket = req.body.bucket
-        }
-        if (req.body.daysSince) {
-          contact.daysSince = req.body.daysSince
-        }
-        if (req.body.lastContact) {
-          contact.lastContact = req.body.lastContact
-        }
-        contact.save(function(err, r) {
-          console.log(err)
-          console.log(r)
-          res.json(r)
-        })
+      db.rmModel.findByIdAndUpdate(id,req.body, function(err, contact){
+        console.log('this is request for update')
+            res.send(contact)
+            console.log(contact);
       })
+
+
+      // db.rmModel.findOne({_id: id}, function(err, contact) {
+      //   console.log("this is rm", req.body[0].firstName)
+      //   if (req.body[0].firstName) {
+      //     contact.firstName = req.body[0].firstname
+      //     console.log('1 ', contact.id);
+      //     contact.save(function(err){
+      //       if(err){console.log(err);}
+      //     })
+        // }
+        // if (req.body.emailAddress) {
+        //   contact.emailAddress = req.body.emailAddress
+        //   console.log('2 - req.body.firstname');
+        // }
+        // if (req.body.bucket) {
+        //   contact.bucket = req.body.bucket
+        //   console.log('3 - req.body.firstname');
+        // }
+        // if (req.body.daysSince) {
+        //   contact.daysSince = req.body.daysSince
+        //   console.log('4 - req.body.firstname');
+        // }
+        // if (req.body.lastContact) {
+        //   contact.lastContact = req.body.lastContact
+        //   console.log('5 - req.body.firstname');
+        // }
+        // if (req.body.overdue) {
+        //   contact.overdue = req.body.overdue
+        //   console.log('6 - req.body.firstname');
+        // }
+        // contact.save(function(err, r) {
+        //   console.log('7 - req.body.firstname');
+        //   console.log('server controller error', err)
+        //   console.log('server controller r', r)
+        //   res.json(r)
+        // })
+      // })
     },
     create: function(req, res) {
       console.log('3 - serverSide: running inside the relationship-minder-controller.js file', req.body)

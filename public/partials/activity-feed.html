@@ -2,7 +2,7 @@
 <!-- The standard activity feed showing notifications -->
 <!-- ================================================================== -->
 
-<div class="container activity-feed 650px-container">
+<div class="container activity-feed 650px-container" data-ng-init="ActCtrl.startOnLoad()">
   <div class="steps row text-center first-div">
     <div class="numberCircle smallerCircle col-xs-6 col-md-4">3</div>
     <div class="started-text top-text col-xs-12 col-md-8">
@@ -12,12 +12,12 @@
 <!-- using cards to show the notifications -->
   <div class="row">
     <div class="col-sm-6 text-center">
-      <div class="card card-block text-center" ng-repeat="contact in vmRMCtrl.googList | filter: contact.overdue = true">
-        <h3 class="card-title" >{{contact.firstName + ' ' + contact.lastName}}</h3>
-        <h4 class="card-text">{{contact.daysSince }} days</h4>
-        <a href="mailto:{{contact.email}}" class="btn btn-primary">Email</a>
-        <a href="tel:{{contact.phone}}" class="btn btn-primary">Call</a>
-        <a href="sms:1-{{contact.phone}}" class="btn btn-primary">SMS</a>
+      <div class="card card-block text-center" ng-repeat="rmContact in ActCtrl.allContacts | filter: allContacts.overdue = true">
+        <h3 class="card-title" >{{(rmContact.firstName + ' ' + rmContact.lastName) || rmContact.emailAddress1}}</h3>
+        <h4 class="card-text">{{rmContact.daysSince }} days</h4>
+        <a href="mailto:{{rmContact.email}}" class="btn btn-primary" ng-click="ActCtrl.updateOnClick(rmContact)">Email</a>
+        <a href="tel:{{rmContact.phone}}" class="btn btn-primary" ng-click="ActCtrl.updateOnClick(rmContact)">Call</a>
+        <a href="sms:1-{{rmContact.phone}}" class="btn btn-primary" ng-click="ActCtrl.updateOnClick(rmContact)">SMS</a>
       </div>
     </div>
   </div>

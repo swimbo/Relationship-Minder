@@ -7,7 +7,7 @@ var mongoose       = require('mongoose'),      // <-- assigning mongoose to the 
       emailAddress2 :  String,  // <-- setting the data type for the email address key to string
       phoneNumber1  :  String,  // <-- setting the phone number type for the email address key to string
       phoneNumber2  :  String,  // <-- setting the phone number type for the email address key to string
-      lastContact  : {type: Number, min: 0}, // <-- setting the data type for the last contact key to number with a minimum number of 0
+      lastContact  : {type: Number, default: 0}, // <-- setting the data type for the last contact key to number with a minimum number of 0
       bucket       :  {type: Number, default: 0 }, //<-- setting the data type for the bucket key to number.
       overdue      :  Boolean,                          // <-- setting the data type for the address key to string
       daysSince    : {type: Number, min: 0},  // <-- setting a data type for the days since key, and setting it to validate that a number greater 0
