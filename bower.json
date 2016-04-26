@@ -19,6 +19,8 @@
     "tests"
   ],
   "dependencies": {
-    "hello": "^1.12.0"
+    "hello": "^1.12.0",
+    "angular": "^1.5.5",
+    "bootstrap": "^3.3.6"
   }
 }

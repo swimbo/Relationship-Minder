@@ -25,6 +25,18 @@ module.exports = {
         }
       })
     },
+    checkIf: function(req, res) {
+      db.rmModel.findOne({
+        emailAddress1: emailAddress1
+      }, function(err, result) {
+        if (err) {
+          res.json(err)
+        } else {
+          console.log("Getting a single rmContact via emailAddress1");
+          res.json(true)
+        }
+      })
+    },
     noBuckets: function(req, res) {
       // var id = req.params.id
       db.rmModel.find({
