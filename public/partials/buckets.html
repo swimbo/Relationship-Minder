@@ -22,7 +22,7 @@
   <div class="toBucketName row">
     <div class="span12 text-center">
       <span class="" ng-show="!BucketsCtrl.end"><h1>{{(BucketsCtrl.noBuckets[BucketsCtrl.i].firstName + " " + BucketsCtrl.noBuckets[BucketsCtrl.i].lastName) + " " + BucketsCtrl.noBuckets[BucketsCtrl.i].emailAddress1}}</h1></span>
-      <span class="" ng-show="!BucketsCtrl.end"><h1>{{rmFactory.displayName(BucketsCtrl.noBuckets[BucketsCtrl.i])}} FUNCTION</h1></span>      
+      <span class="" ng-show="!BucketsCtrl.end"><h1>{{BucketsCtrl.displayName(BucketsCtrl.noBuckets[BucketsCtrl.i])}} FUNCTION</h1></span>      
       <span class="" ng-show="BucketsCtrl.end"><h2>All done! <br> Click on the button below to see who you need to contact!</h2></span>
     </div>
   </div>

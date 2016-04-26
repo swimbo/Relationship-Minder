@@ -287,7 +287,14 @@
         //
         //   console.log(contactList.name);
         // }
-
+        // BucketsCtrl.displayName = function (rmContact) {
+        //   console.log('A - formatting user data for display')
+        //   if (rmContact.firstName && rmContact.lastName) {
+        //   return rmContact.firstName + " " + rmContact.lastName
+        //   }
+        //   else {return rmContact.emailAddress1}
+        //     console.log('B - finished formatting user data')
+        //   }
 
     }
 
@@ -371,7 +378,7 @@
           rmContact.lastContact = dateToday.getTime()
           rmContact.overdue = false
           console.log(rmContact.lastContact);
-          rmFactory.update(rmContact)
+          rmFactory.update(rmContact._id, rmContact)
         }
 
 }
