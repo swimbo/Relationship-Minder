@@ -5,6 +5,7 @@ var express   = require('express'),
   logger      = require('morgan'),
   cors        = require('cors'),
   path        = require('path'),
+  uirouter    = require('angular-ui-router')
   port        = process.env.PORT || 8081,
   apiRoutes   = require('./api_routes'),
   mongoose    = require('mongoose'),
