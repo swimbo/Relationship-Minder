@@ -11,10 +11,10 @@
     angular.module('RelationshipMinder')
         .controller('GoogleAuthController', GoogleAuthController)
 
-    GoogleAuthController.$inject = ['$http', 'rmFactory']
+    GoogleAuthController.$inject = ['$http', 'rmFactory', '$location']
 
 
-    function GoogleAuthController($http, rmFactory) {
+    function GoogleAuthController($http, rmFactory, $location) {
         console.log('0 - GoogleAuthController start');
         var rmAuth = this
         var clientId = '199009851105-3heb28ouj2tkpa9ao0gbjoda36e77qbb.apps.googleusercontent.com';
@@ -44,10 +44,14 @@
                 if (authorizationResult && !authorizationResult.error) {
                     $http({
                         method: 'GET',
-                        url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=30&v=3.0"
+                        url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=11&v=3.0"
                     }).then(success_callback, error_callback)
 
                     function success_callback(response) {
+                      rmAuth.spinner = function(){
+                        return true
+                      }
+
                         // See what the raw response looks linked
                         console.log(response);
 
@@ -109,6 +113,7 @@
                                 console.log(rawdata);
                                 console.log(cleanContactArray)
                                 for (var i = 0; i < rawdata.length; i++) {
+                                  // if()
                                     cleanContactArray.push(
                                         new contactItem(
                                             firstNameGoog(i),
@@ -121,6 +126,7 @@
                                     )
                                 }
                                 return cleanContactArray
+                                console.log(cleanContactArray);
                             }
                             cleanContactArrayPusher()
 
@@ -177,6 +183,7 @@
                             pushCreatetoDB(cleanContactArray)
                         }
                         removeNullsandUndefined(rawdata)
+                        $location.path('/buckets')
 
                     }
 
@@ -186,6 +193,8 @@
                 }
                 console.log('6 - original handleAuthorization end');
             }
+
+
             //
             // module.exports = {}
             //   rmAuth: {}
@@ -358,16 +367,22 @@
     function BucketsController(rmFactory) {
         var BucketsCtrl = this
 
+        // BucketsCtrl.delay = function(){
+        //   console.log('50 - timeout function start')
+        //   setTimeout(function(){
+        //
+        //     console.log('51 - timeout function end');
+        //   }, 5000)
+        // }
+        // BucketsCtrl.delay()
+        BucketsCtrl.noBuckets = []
         BucketsCtrl.i = 0
         BucketsCtrl.end = false
 
 // Function to get all the contacts from the DB that DON'T have a bucket set.
-      rmFactory.getNoBuckets()
-        .then(function(result){
-          console.log('get no buckets is running in app.js');
-          BucketsCtrl.noBuckets = result.data
-          console.log(BucketsCtrl.noBuckets)
-        })
+      rmFactory.getNoBuckets(function(res){
+        BucketsCtrl.noBuckets = res.data
+      })
 
         BucketsCtrl.contactBucket = function (bucketValue) {
           console.log(BucketsCtrl.i);

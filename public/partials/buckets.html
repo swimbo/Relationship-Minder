@@ -21,7 +21,7 @@
   </div> -->
   <div class="toBucketName row">
     <div class="span12 text-center">
-      <span class="" ng-show="!BucketsCtrl.end"><h1>{{BucketsCtrl.noBuckets[BucketsCtrl.i].firstName + " " + BucketsCtrl.noBuckets[BucketsCtrl.i].lastName || BucketsCtrl.noBuckets[BucketsCtrl.i].emailAddress1 || BucketsCtrl.noBuckets[BucketsCtrl.i].email || BucketsCtrl.contactBucket()}}</h1></span>
+      <span class="" ><h1>{{BucketsCtrl.noBuckets[BucketsCtrl.i].firstName + " " + BucketsCtrl.noBuckets[BucketsCtrl.i].lastName || BucketsCtrl.noBuckets[BucketsCtrl.i].emailAddress1 || BucketsCtrl.noBuckets[BucketsCtrl.i].email || BucketsCtrl.contactBucket()}}</h1></span>
       <span class="" ng-show="BucketsCtrl.end"><h2>All done! <br> Click on the button below to see who you need to contact!</h2></span>
     </div>
   </div>
@@ -71,6 +71,9 @@
   <div class="">
 
     <p class="text-center"><a class="btn btn-primary btn-large bucket-button" ng-disabled="BucketsCtrl.end" ui-sref="activity-feed"> View Notifications &raquo;</a></p>
+    <p>
+      {{BucketsCtrl.noBuckets.length}}
+    </p>
 
   </div>
 
