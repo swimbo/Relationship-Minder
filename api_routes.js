@@ -9,8 +9,8 @@ var
   apiRouter.route('/relationship-minder/noBuckets')
     .get(ctrl.rmController.noBuckets)
 
-  apiRouter.route('/relationship-minder/overdueContacts')
-    .get(ctrl.rmController.overdueContacts)
+    apiRouter.route('/relationship-minder/overdueContacts')
+      .get(ctrl.rmController.overdueContacts)
 
    apiRouter.route('/relationship-minder/:id')
   //http://localhost:3000/api/v1/relationship-minder/:valueHere

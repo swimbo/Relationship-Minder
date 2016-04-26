@@ -110,19 +110,18 @@
                             console.log(rawdata);
                             console.log(cleanContactArray)
                             for (var i = 0; i < rawdata.length; i++) {
-                                // if(!rmController.checkIf(cleanContactArray[i].emailAddress1)){
-                                  cleanContactArray.push(
+                                // if()
+                                cleanContactArray.push(
                                     new contactItem(
-                                      firstNameGoog(i),
-                                      lastNameGoog(i),
-                                      emailAddress1Goog(i),
-                                      phoneNumber1Goog(i),
-                                      socialMediaGoog(i),
-                                      postalAddressGoog(i),
-                                      i
+                                        firstNameGoog(i),
+                                        lastNameGoog(i),
+                                        emailAddress1Goog(i),
+                                        phoneNumber1Goog(i),
+                                        socialMediaGoog(i),
+                                        postalAddressGoog(i),
+                                        i
                                     )
-                                  )
-                                // }
+                                )
                             }
                             return cleanContactArray
                             console.log(cleanContactArray);
