@@ -20,6 +20,7 @@
     "angular-ui-router": "^0.2.18",
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
+    "datejs": "^1.0.0-rc3",
     "express": "^4.13.4",
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",

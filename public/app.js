@@ -3,7 +3,7 @@
     //======================================================//
     // Declare the module
     //======================================================//
-    angular.module('RelationshipMinder', ['myControllers', 'uirouter', 'myFactory'])
+    angular.module('RelationshipMinder', ['myControllers', 'ui.router', 'myFactory'])
 
     // =======================================================//
     //   Google Auth Controller
