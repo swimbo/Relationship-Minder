@@ -13,7 +13,8 @@
   <div class="row">
     <div class="col-sm-6 text-center">
       <div class="card card-block text-center" ng-repeat="rmContact in ActCtrl.allContacts | filter: allContacts.overdue = true">
-        <h3 class="card-title" >{{(rmContact.firstName + ' ' + rmContact.lastName) || rmContact.emailAddress1}}</h3>
+        <h3 class="card-title" >
+        {{ActCtrl.displayName(rmContact)}}</h3>
         <h4 class="card-text">{{rmContact.daysSince }} days</h4>
         <a href="mailto:{{rmContact.email}}" class="btn btn-primary" ng-click="ActCtrl.updateOnClick(rmContact)">Email</a>
         <a href="tel:{{rmContact.phone}}" class="btn btn-primary" ng-click="ActCtrl.updateOnClick(rmContact)">Call</a>

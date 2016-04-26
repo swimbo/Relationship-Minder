@@ -287,14 +287,14 @@
         //
         //   console.log(contactList.name);
         // }
-        // BucketsCtrl.displayName = function (rmContact) {
-        //   console.log('A - formatting user data for display')
-        //   if (rmContact.firstName && rmContact.lastName) {
-        //   return rmContact.firstName + " " + rmContact.lastName
-        //   }
-        //   else {return rmContact.emailAddress1}
-        //     console.log('B - finished formatting user data')
-        //   }
+        BucketsCtrl.displayName = function (rmContact) {
+          console.log('A - formatting user data for display')
+          if (rmContact.firstName && rmContact.lastName) {
+          return rmContact.firstName + " " + rmContact.lastName
+          }
+          else {return rmContact.emailAddress1}
+            console.log('B - finished formatting user data')
+          }
 
     }
 
@@ -381,6 +381,15 @@
           rmFactory.update(rmContact._id, rmContact)
         }
 
+
+        ActCtrl.displayName = function (rmContact) {
+          console.log('A - formatting user data for display')
+          if (rmContact.firstName && rmContact.lastName) {
+            return rmContact.firstName + " " + rmContact.lastName
+          }
+          else {return rmContact.emailAddress1}
+          console.log('B - finished formatting user data')
+        }
 }
 
 
