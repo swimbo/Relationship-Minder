@@ -56,17 +56,14 @@
                         console.log(response);
 
                         // object constructor to create new contact objects based on API return
-                        function contactItem(firstName, lastName, email, phone, socialMedia, postalAddress, lastContact, bucket, overdue, daysSince) {
+                        function contactItem(firstName, lastName, emailAddress1, phoneNumber1, socialMedia, postalAddress, arrayOrder) {
                             this.firstName = firstName;
                             this.lastName = lastName;
-                            this.email = email;
-                            this.phone = phone;
+                            this.emailAddress1 = emailAddress1;
+                            this.phoneNumber1 = phoneNumber1;
                             this.socialMedia = socialMedia;
                             this.postalAddress = postalAddress;
-                            this.lastContact = lastContact;
-                            this.bucket = bucket;
-                            this.overdue = overdue;
-                            this.daysSince = daysSince;
+                            this.arrayOrder = arrayOrder;
                         }
 
                         // Check for Nulls and Undefined and push to new array if neither is present
@@ -78,7 +75,7 @@
                             var cleanContactArray = []
 
                             var firstNameGoog = function(i) {
-                                if (response.data.feed.entry[i].gd$name !== undefined && response.data.feed.entry[i].gd$name.gd$givenName !== undefined) {
+                              if(response.data.feed.entry[i].gd$name !== undefined && response.data.feed.entry[i].gd$name.gd$familyName !== undefined){
                                     return response.data.feed.entry[i].gd$name.gd$givenName.$t || 'unknown'
                                 }
                             }
@@ -121,7 +118,8 @@
                                             emailAddress1Goog(i),
                                             phoneNumber1Goog(i),
                                             socialMediaGoog(i),
-                                            postalAddressGoog(i)
+                                            postalAddressGoog(i),
+                                            i
                                         )
                                     )
                                 }
@@ -212,127 +210,41 @@
 
     function RelationshipMinderController(rmFactory) {
         var vmRMCtrl = this
-            //placing bindable members at the top for easier readability
+
+        // For todays date (via the datejs library);
+            var dateToday = Date.today()
+            var dateMilliseconds = dateToday.getTime()
+            console.log(dateMilliseconds);
+
+
+            // Function to calculate the daysSince last contacts
+
+
+            // Function to set the boolean "overdueAmt" to true if applicable
+
+
+            // Function to get all the contacts from the DB that are overdue
+                  rmFactory.getNoBuckets(function(res){
+                    vmRMCtrl.noBuckets = res.data
+                    console.log(vmRMCtrl.noBuckets);
+                  })
+
+            vmRMCtrl.overdueAmt(){
+              for(var i = 0; i < vmRMCtrl.noBuckets.lengthlength; i++){
+                var millisecondsOverdue = dateMilliseconds - vmRMCtrl.googList[i].lastContact
+                var daysSince = (millisecondsOverdue / 86400000)
+                vmRMCtrl.googList[i].daysSince = Math.round(daysSince)
+              }
 
 
 
 
 
+            }
+            // To simulate loading contacts, I should call this after click of "add contacts" and google auth. Putting here for now.
+        //  NOT CALLING THIS YET:
+        //  overdueAmt()
 
-        // vmRMCtrl.contactItem = contactItem;
-
-
-        // =======================================================//
-        //   Array Constructor and manipulation in this section
-        // =======================================================//
-        // console.log(rawGoogleContacts);
-        // array constructor to create new contact lists of contact objects
-        // function cleanContactArray() {
-        //     vmRMCtrl.cleanContactArray = cleanContactArray;
-        // }
-        //
-        // //function to create the empty array that google contact objects will reside in
-        // vmRMCtrl.googList = new cleanContactArray([])
-        // console.log(vmRMCtrl);
-
-        // object constructor to create new contact objects based on API return
-        // function contactItem(firstName, lastName, email, phone, lastContact, bucket, overdue, daysSince) {
-        //     this.firstName = firstName;
-        //     this.lastName = lastName;
-        //     this.email = email;
-        //     this.phone = phone;
-        //     this.lastContact = lastContact;
-        //     this.bucket = bucket;
-        //     this.overdue = overdue;
-        //     this.daysSince = daysSince;
-        // }
-
-        //
-        //     // =======================================================//
-        //     // Contacts Page starts here
-        //     // =======================================================//
-        //
-        //
-        //     // For todays date (via the datejs library);
-        //     var dateToday = Date.today()
-        //     var dateMilliseconds = dateToday.getTime()
-        //     console.log(dateMilliseconds);
-        //
-        //     function overdueAmt(){
-        //       for(var i = 0; i < vmRMCtrl.googList.length; i++){
-        //         var millisecondsOverdue = dateMilliseconds - vmRMCtrl.googList[i].lastContact
-        //         var daysSince = (millisecondsOverdue / 86400000)
-        //         vmRMCtrl.googList[i].daysSince = Math.round(daysSince)
-        //
-        //       }
-        //
-        //     }
-        //     // To simulate loading contacts, I should call this after click of "add contacts" and google auth. Putting here for now.
-        // //  NOT CALLING THIS YET:
-        // //  overdueAmt()
-        //
-        //
-        // //
-        //
-
-            // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
-
-            // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
-            // vmRMCtrl.checkBtnStatus = function() {
-            //   if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-            //     return true
-            //   }
-            //   else {
-            //     return false
-            //   }
-            // }
-
-            //bucketing function on click assign bucket value to appropriate key value pair AND call next one
-            // function nextContact (){
-            //   vmRMCtrl.checkBtnStatus()
-            //   if (vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-            //     console.log(vmRMCtrl.googList[vmRMCtrl.OnDeck])
-            //     // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
-            //     if(vmRMCtrl.googList[vmRMCtrl.OnDeck].daysSince <= vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket){
-            //       vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = false
-            //     }
-            //     else{
-            //       vmRMCtrl.googList[vmRMCtrl.OnDeck].overdue = true
-            //     }
-            //     if(vmRMCtrl.OnDeck < vmRMCtrl.googList.length){
-            //         vmRMCtrl.OnDeck++
-            //         nextContact()
-            //
-            //     }
-            //     // else{
-            //     //   vmRMCtrl.lastMessage = 'All done! Click the button to see notifications.'
-            //     //   console.log(vmRMCtrl.lastMessage);
-            //     // }
-            //
-            //   }
-            //
-            // }
-            //this function is going to add the bucket information to the contact objects
-        //     vmRMCtrl.contactBucket = function (bucketValue) {
-        //       vmRMCtrl.googList[vmRMCtrl.OnDeck].bucket = bucketValue
-        //       nextContact()
-        //     }
-        //     nextContact()
-        //
-        //
-        // vmRMCtrl.checkBtnStatus()
-
-        // //this function is going to connect to the API and add the contacts to the contactList array
-        // function contactBucket(){
-        //
-        //   console.log(contactList.name);
-        // }
-
-        // //this function is going to set the preferred notification type by... BUCKET?
-        // function notificationType() {
-        //
-        //   console.log(contactList.name);
-        // }
 
         // =======================================================//
         // Notification Page logic starts here
@@ -382,62 +294,42 @@
 // Function to get all the contacts from the DB that DON'T have a bucket set.
       rmFactory.getNoBuckets(function(res){
         BucketsCtrl.noBuckets = res.data
+        console.log(BucketsCtrl.noBuckets);
       })
 
+        var dateToday = Date.today()
+        function lastContactRando(){
+          var randoLastContact = (dateToday.getTime()) - (Math.random * 8640000000)
+          return randoLastContact
+          console.log(randoLastContact);
+        }
+        lastContactRando()
+
         BucketsCtrl.contactBucket = function (bucketValue) {
-          console.log(BucketsCtrl.i);
-          console.log(bucketValue);
-          rmFactory.update(BucketsCtrl.noBuckets[BucketsCtrl.i]._id,{'bucket': bucketValue})
-          .then( function(response){
-            console.log(response);
-            if(BucketsCtrl.i < BucketsCtrl.noBuckets.length){
-              BucketsCtrl.i++
+            if(BucketsCtrl.i < BucketsCtrl.noBuckets.length - 1){
+              rmFactory.update(BucketsCtrl.noBuckets[BucketsCtrl.i]._id,{'bucket': bucketValue})
+              .then(function(response){
+                console.log(response)
+                BucketsCtrl.i++
+                console.log(BucketsCtrl.end);
+                console.log(BucketsCtrl.i);
+                console.log(BucketsCtrl.noBuckets.length);
+              })
             }
             else{
-              BucketsCtrl.end = true
+              return BucketsCtrl.end = true
+              console.log(BucketsCtrl.end);
             }
-          }
-
-          )
+            // Inserting fake data in here to make the demo better
+            // COMMENT THIS SECTION OUT AFTER DEMO
+            for (var i = 0; i < BucketsCtrl.noBuckets.length - 1; i++) {
+              var randoDate = (Date.today().getTime() - 8640000000 * i)
+              rmFactory.update(BucketsCtrl.noBuckets[BucketsCtrl.i]._id,{'lastContact': randoDate})
+              console.log(randoDate);
+            }
         }
-        // function to check if a given item in the array has a bucket set and then if false return the firstname + lastname of a given object in the array or move to the next if true
-
-        // this function is going to check and see if we have bucketed all of our contacts and, if we have, then return false to disable the button.
 
 
-
-
-        // bucketing function on click assign bucket value to appropriate key value pair AND call next one
-        // function nextContact (){
-        //   BucketsCtrl.checkBtnStatus()
-        //   if (BucketsCtrl.noBuckets[BucketsCtrl.OnDeck].bucket){
-        //     console.log(BucketsCtrl.noBuckets[BucketsCtrl.OnDeck])
-        //     // this checks if bucket date is greater than days since last contact and sets overdue to true/false based on that check
-        //     if(BucketsCtrl.googList[BucketsCtrl.OnDeck].daysSince <= BucketsCtrl.googList[BucketsCtrl.OnDeck].bucket){
-        //       BucketsCtrl.googList[BucketsCtrl.OnDeck].overdue = false
-        //     }
-        //     else{
-        //       BucketsCtrl.googList[BucketsCtrl.OnDeck].overdue = true
-        //     }
-        //     if(BucketsCtrl.OnDeck < BucketsCtrl.googList.length){
-        //         BucketsCtrl.OnDeck++
-        //         nextContact()
-        //
-        //     }
-        //     else{
-        //       BucketsCtrl.lastMessage = 'All done! Click the button to see notifications.'
-        //       console.log(BucketsCtrl.lastMessage);
-        //     }
-        //
-        //   }
-        //
-        // }
-        // this function is going to add the bucket information to the contact objects
-
-
-
-// TURNING OFF AUTO-INVOKE HERE
-            // BucketsCtrl.checkBtnStatus()
 
             //this function is going to connect to the API and add the contacts to the contactList array
             // function contactBucket(){
@@ -445,12 +337,6 @@
             //   console.log(contactList.name);
             // }
 
-            //this function is going to set the preferred notification type by... BUCKET?
-            // function notificationType() {
-            //
-            //   console.log(contactList.name);
-            // }
-            //
 
 }
 

@@ -27,7 +27,19 @@ module.exports = {
     },
     noBuckets: function(req, res) {
       // var id = req.params.id
-
+      db.rmModel.find({
+        bucket: 0
+      }, function(err, rmContact) {
+        if (err) {
+          res.json(err)
+        } else {
+          console.log("Getting a contact without a bucket");
+          res.json(rmContact)
+        }
+      })
+    },
+    overdueContacts: function(req, res) {
+      // var id = req.params.id
       db.rmModel.find({
         bucket: 0
       }, function(err, rmContact) {
@@ -55,6 +67,9 @@ module.exports = {
         }
         if (req.body.daysSince) {
           contact.daysSince = req.body.daysSince
+        }
+        if (req.body.lastContact) {
+          contact.lastContact = req.body.lastContact
         }
         contact.save(function(err, r) {
           console.log(err)

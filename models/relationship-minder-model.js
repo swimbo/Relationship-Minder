@@ -15,7 +15,8 @@ var mongoose       = require('mongoose'),      // <-- assigning mongoose to the 
       createdAt    : {type: Date, default: Date.now}, // setting the createdAt key to automatically assign the specific day date to createdAt
       nextContact  :  Date,
       socialMedia    :  String,
-      postalAddress:  String
+      postalAddress:  String,
+      arrayOrder: Number
   })
 
 
