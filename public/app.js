@@ -18,7 +18,7 @@
         console.log('0 - GoogleAuthController start');
         var rmAuth = this
         var clientId_LH = '199009851105-3heb28ouj2tkpa9ao0gbjoda36e77qbb.apps.googleusercontent.com';
-        var clientID_DO = 199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com
+        var clientID_DO = '199009851105-j9aosg5ru9knh1rje5acp0qav5s5ant5.apps.googleusercontent.com'
         var apiKey = 'Your API Code';
         var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
         var scopes2 = 'https://www.googleapis.com/auth/userinfo.email';
