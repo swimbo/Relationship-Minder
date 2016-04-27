@@ -9,7 +9,7 @@ var express   = require('express'),
   port        = process.env.PORT || 8081,
   apiRoutes   = require('./api_routes'),
   mongoose    = require('mongoose'),
-  databaseURL = "mongodb://localhost:27017/testUsers"
+  databaseURL = "mongodb://localhost/testUsers"
 
 // Connecting to the mongoose database
 mongoose.connect(databaseURL, function(err){
